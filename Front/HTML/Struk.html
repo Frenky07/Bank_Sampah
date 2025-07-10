@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Struk Setoran</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 2rem;
+        }
+
+        .struk-box {
+            border: 1px solid #000;
+            padding: 1rem;
+        }
+
+        button {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="struk-box" id="struk">
+        <h2>Bank Sampah</h2>
+        <p>Nama Petugas: <span id="petugas"></span></p>
+        <p>Nama Nasabah: <span id="nasabah"></span></p>
+        <p>Jenis Sampah: <span id="jenis"></span></p>
+        <p>Berat: <span id="berat"></span> kg</p>
+        <p>Harga/kg: Rp <span id="harga"></span></p>
+        <p><strong>Total: Rp <span id="total"></span></strong></p>
+        <p>Tanggal: <span id="tanggal"></span></p>
+    </div>
+
+    <button onclick="window.print()">Cetak</button>
+
+    <script>
+        // Ambil data dari localStorage atau query parameter
+        const data = JSON.parse(localStorage.getItem("setoranTerakhir"));
+
+        if (data) {
+            document.getElementById("petugas").textContent = data.petugas;
+            document.getElementById("nasabah").textContent = data.nasabah;
+            document.getElementById("jenis").textContent = data.jenis;
+            document.getElementById("berat").textContent = data.berat;
+            document.getElementById("harga").textContent = data.harga;
+            document.getElementById("total").textContent = data.berat * data.harga;
+            document.getElementById("tanggal").textContent = new Date().toLocaleDateString();
+        }
+    </script>
+
+</body>
+
+</html>
