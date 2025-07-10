@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #ffffff;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+}
+
+.navbar-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.navbar-visible {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20px;
+}
+
+.navbar-menu{
+    display: flex;
+    gap: 20px;
+}
+
+.Navbar-Item {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.Navbar-Item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.navbar-item::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ffd700;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-item:hover::after {
+    width: 80%;
+}
+
+.Navbar-Item:active {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(0);
+}
+
+#Navbar-Item-LogOut {
+    margin-left: auto;
+    align-self: flex-end;
+    color: white;
+}
+
+#Navbar-Item-LogOut:hover {
+    background-color: red;
+    transform: translateY(-2px);
+}
+
+main {
+    margin-top: 70px;
+}
+
+.section{
+    min-height: 100vh;
+    padding: 80px 20px;
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.section:nth-child(odd) {
+    background-color: #f4f4f4;
+}
+
+.section:nth-child(even) {
+    background-color: #efffe4;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.Section {
+    animation:fadeIn 0.5s ease-in-out;
+}
