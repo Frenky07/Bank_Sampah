@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #ffffff;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+}
+
+.navbar-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.navbar-visible {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20px;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.Navbar-Item {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.Navbar-Item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.navbar-item::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ffd700;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-item:hover::after {
+    width: 80%;
+}
+
+.Navbar-Item:active {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(0);
+}
+
+#Navbar-Item-LogOut {
+    margin-left: auto;
+    align-self: flex-end;
+    color: white;
+}
+
+#Navbar-Item-LogOut:hover {
+    background-color: red;
+    transform: translateY(-2px);
+}
+
+main {
+    padding: 20px;
+    margin-top: 60px;
+}
+
+.Button-Back {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4e54c8;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.Button-Back:hover {
+    background-color: #6c61be;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    background: #e0e0e0;
+    border: 1px solid #ccc;
+}
+
+.Table-Sampah{
+    margin-top: 20px;
+}
