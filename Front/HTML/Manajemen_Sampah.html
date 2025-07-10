@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manajemen</title>
     <link rel="stylesheet" href="../CSS/Manajemen_Sampah.css">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navbar-container">
@@ -38,6 +40,25 @@
                     <!-- Data sampah akan ditampilkan di sini -->
                 </tbody>
         </div>
+
+        <div class="Table-Edit">
+            <div class="Table-Edit-Content">
+                <h3>Edit Data Sampah</h3>
+                <input type="text" class="Form-Edit" id="editNamaPetugas" placeholder="Nama Petugas">
+                <input type="text" class="Form-Edit" id="editNamaNasabah" placeholder="Nama Nasabah">
+                <input type="date" class="Form-Edit" id="editTanggal">
+                <select class="Form-Edit" id="editJenisSampah">
+                    <option value="">Pilih Jenis Sampah</option>
+                    <option value="organik">Organik</option>
+                    <option value="anorganik">Anorganik</option>
+                </select>
+                <input type="text" class="Form-Edit" id="editSubKategori" placeholder="Sub Kategori">
+                <input type="number" class="Form-Edit" id="editBerat" placeholder="Berat (kg)" min="0" step="0.01">
+                <button class="Button-Edit" onclick="editData()">Simpan</button>
+                <button class="Button-Edit" onclick="Close()">Batal</button>
+            </div>
+        </div>
     </main>
 </body>
+
 </html>
