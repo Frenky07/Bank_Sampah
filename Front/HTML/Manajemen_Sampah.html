@@ -31,31 +31,34 @@
             <table class="Table-Sampah">
                 <thead>
                     <tr>
-                        <th scope="col">Nama Petugas</th>
-                        <th scope="col">Nama Nasabah</th>
+                        <th scope="col">Kepala Keluarga</th>
+                        <th scope="col">NIK</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Jenis Sampah</th>
-                        <th scope="col">Sub Kategori</th>
+                        <!-- <th scope="col">Sub Kategori</th> -->
                         <th scope="col">Berat (kg)</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- Data sampah akan ditampilkan di sini -->
+                <tbody id="dataSampah">
                 </tbody>
         </div>
 
         <div class="Table-Edit">
             <div class="Table-Edit-Content">
                 <h3>Edit Data Sampah</h3>
-                <input type="text" class="Form-Edit" id="editNamaPetugas" placeholder="Nama Petugas">
-                <input type="text" class="Form-Edit" id="editNamaNasabah" placeholder="Nama Nasabah">
+                <input type="text" class="Form-Edit" id="editNamaKK" placeholder="Kepala Keluarga">
+                <input type="text" class="Form-Edit" id="editNIK" placeholder="Nomor Induk Keluarga">
                 <input type="date" class="Form-Edit" id="editTanggal">
                 <select class="Form-Edit" id="editJenisSampah">
                     <option value="">Pilih Jenis Sampah</option>
-                    <option value="organik">Organik</option>
-                    <option value="anorganik">Anorganik</option>
+                    <option value="anorganik">#</option>
+                    <option value="anorganik">#</option>
+                    <option value="anorganik">#</option>
+                    <option value="anorganik">#</option>
+                    <option value="anorganik">#</option>
+                    <option value="anorganik">#</option>
                 </select>
-                <input type="text" class="Form-Edit" id="editSubKategori" placeholder="Sub Kategori">
+                <!-- <input type="text" class="Form-Edit" id="editSubKategori" placeholder="Sub Kategori"> -->
                 <input type="number" class="Form-Edit" id="editBerat" placeholder="Berat (kg)" min="0" step="0.01">
                 <button class="Button-Edit" onclick="editData()">Simpan</button>
                 <button class="Button-Edit" onclick="Close()">Batal</button>

@@ -28,8 +28,8 @@
                 <h2>Bank sampah</h2>
                 <p>=======================================</p>
                 <!-- <p>Nama: <span id="nama"></span></p> -->
-                <p>Nama Petugas: <span id="petugas"></span></p>
-                <p>Nama Nasabah: <span id="nasabah"></span></p>
+                <p>Nama: <span id="petugas"></span></p>
+                <p>NIK: <span id="nik"></span></p>
                 <p>Jenis Sampah: <span id="jenis"></span></p>
                 <p>Berat: <span id="berat"></span> kg</p>
                 <p>Harga/kg: Rp <span id="harga"></span></p>
@@ -38,7 +38,10 @@
             </div>
         </div>
     </main>
-    <button onclick="window.print()" class="Button-Cetak">Cetak</button>
+
+    <div class="Button-Submit">
+        <button onclick="window.print()" class="Button-Cetak">Cetak</button>
+    </div>
 
     <script>
         // Ambil data dari localStorage atau query parameter
@@ -46,7 +49,7 @@
 
         if (data) {
             document.getElementById("petugas").textContent = data.petugas;
-            document.getElementById("nasabah").textContent = data.nasabah;
+            document.getElementById("nik").textContent = data.nasabah;
             document.getElementById("jenis").textContent = data.jenis;
             document.getElementById("berat").textContent = data.berat;
             document.getElementById("harga").textContent = data.harga;
