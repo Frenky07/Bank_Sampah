@@ -97,3 +97,33 @@ main {
     padding: 20px;
     margin-top: 60px;
 }
+
+.struk-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Struk{
+    padding: 10px;
+    border-style: dotted;
+    /* background-color: #4e54c8; */
+}
+
+h2{
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4e54c8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover{
+    background-color: #8f94fb;
+}

@@ -4,21 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Struk Setoran</title>
-    <!-- <style>
-        body {
-            font-family: Arial;
-            margin: 2rem;
-        }
-
-        .struk-box {
-            border: 1px solid #000;
-            padding: 1rem;
-        }
-
-        button {
-            margin-top: 1rem;
-        }
-    </style> -->
     <link rel="stylesheet" href="../CSS/Struk.css">
 </head>
 
@@ -37,18 +22,23 @@
         </div>
     </nav>
 
-    <div class="struk-box" id="struk">
-        <h2>Bank Sampah</h2>
-        <p>Nama Petugas: <span id="petugas"></span></p>
-        <p>Nama Nasabah: <span id="nasabah"></span></p>
-        <p>Jenis Sampah: <span id="jenis"></span></p>
-        <p>Berat: <span id="berat"></span> kg</p>
-        <p>Harga/kg: Rp <span id="harga"></span></p>
-        <p><strong>Total: Rp <span id="total"></span></strong></p>
-        <p>Tanggal: <span id="tanggal"></span></p>
-    </div>
-
-    <button onclick="window.print()">Cetak</button>
+    <main>
+        <div class="struk-box" id="struk">
+            <div class="Struk">
+                <h2>Bank sampah</h2>
+                <p>=======================================</p>
+                <!-- <p>Nama: <span id="nama"></span></p> -->
+                <p>Nama Petugas: <span id="petugas"></span></p>
+                <p>Nama Nasabah: <span id="nasabah"></span></p>
+                <p>Jenis Sampah: <span id="jenis"></span></p>
+                <p>Berat: <span id="berat"></span> kg</p>
+                <p>Harga/kg: Rp <span id="harga"></span></p>
+                <p><strong>Total: Rp <span id="total"></span></strong></p>
+                <p>Tanggal: <span id="tanggal"></span></p>
+            </div>
+        </div>
+    </main>
+    <button onclick="window.print()" class="Button-Cetak">Cetak</button>
 
     <script>
         // Ambil data dari localStorage atau query parameter
