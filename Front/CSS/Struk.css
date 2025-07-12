@@ -105,7 +105,8 @@ main {
 }
 
 .Struk{
-    padding: 10px;
+    padding: 20px;
+    height: 47dvh;
     border-style: dotted;
 }
 
