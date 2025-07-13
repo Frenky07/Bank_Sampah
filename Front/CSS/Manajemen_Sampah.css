@@ -10,6 +10,10 @@ body {
     background-color: #9DC139;
 }
 
+main {
+    padding: 20px;
+}
+
 .navbar {
     display: flex;
     z-index: 1000;
