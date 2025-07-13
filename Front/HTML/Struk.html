@@ -26,7 +26,7 @@
                 <h2>Bank sampah</h2>
                 <p>=======================================</p>
                 <!-- <p>Nama: <span id="nama"></span></p> -->
-                <p>Nama: <span id="petugas"></span></p>
+                <p>Nama: <span id="nama"></span></p>
                 <p>NIK: <span id="nik"></span></p>
                 <p>Jenis Sampah: <span id="jenis"></span></p>
                 <p>Berat: <span id="berat"></span> kg</p>
@@ -48,7 +48,7 @@
         const data = JSON.parse(localStorage.getItem("setoranTerakhir"));
 
         if (data) {
-            document.getElementById("petugas").textContent = data.petugas;
+            document.getElementById("nama").textContent = data.petugas;
             document.getElementById("nik").textContent = data.nasabah;
             document.getElementById("jenis").textContent = data.jenis;
             document.getElementById("berat").textContent = data.berat;

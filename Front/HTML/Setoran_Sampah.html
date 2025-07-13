@@ -23,19 +23,18 @@
         </div>
     </nav>
     <main>
-        <!-- <button class="Button-Back" onclick="window.location.href='Dashboard.html'">Kembali</button> -->
-        <form class="Form_Sampah">
+        <form class="Form_Sampah" action="../../Back/php/Setoran_Sampah.php" method="post">
             <h1>Form Setor Sampah</h1>
 
             <div class="Form-group">
                 <div class="Form-Menu">
-                    <label for="Nama-KK">Nama Kepala Keluarga</label>
-                    <input type="text" id="Nama-KK" name="Nama_Petugas" required>
+                    <label for="nama">Nama Kepala Keluarga</label>
+                    <input type="text" id="nama" name="nama" required>
                 </div>
 
                 <div class="Form-Menu">
                     <label for="nik">Nomor Induk Keluarga </label>
-                    <input type="text" id="nik" name="NIK" required>
+                    <input type="number" id="nik" name="nik" required>
                 </div>
 
                 <div class="Form-Menu">
@@ -47,16 +46,11 @@
                     <label for="jenis_sampah">Jenis Sampah:</label>
                     <select id="jenis_sampah" name="jenis_sampah" required>
                         <option value="">Pilih Jenis Sampah</option>
-                        <option value="anorganik">#</option>
-                        <option value="anorganik">#</option>
-                        <option value="anorganik">#</option>
-                        <option value="anorganik">#</option>
-                        <option value="anorganik">#</option>
-                        <option value="anorganik">#</option>
+                        <option value="anorganik">Plastic</option>
+                        <option value="anorganik">Kertas</option>
+                        <option value="anorganik">Logam</option>
+                        <option value="anorganik">Kaca</option>
                     </select>
-
-                    <!-- <label for="sub_kategori">Sub Kategori</label>
-                    <input type="text" id="sub_kategori" name="sub_kategori"> -->
                 </div>
 
                 <div class="Form-Menu">
