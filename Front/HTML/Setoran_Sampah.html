@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setor Sampah</title>
+    <link rel="stylesheet" href="../CSS/Setoran_Sampah.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+        </div>
+        <div class="navbar-menu">
+            <!-- Nama hanya sementara :( -->
+            <a href="Dashboard.html" class="Navbar-Item">Beranda</a>
+            <a href="Setoran_Sampah.html" class="Navbar-Item">Setor</a>
+            <a href="Manajemen_Sampah.html" class="Navbar-Item">Kelola</a>
+            <a href="Struk.html" class="Navbar-Item">Struk</a>
+            <a href="#" class="Navbar-Item">Bantuan</a>
+            <a href="Login_Page.html" class="Navbar-Item" id="Navbar-Item-LogOut">Logout</a>
+        </div>
+    </nav>
+    <main>
+        <form class="Form_Sampah" action="../../Back/php/Setoran_Sampah.php" method="post">
+            <h1>Form Setor Sampah</h1>
+
+            <div class="Form-group">
+                <div class="Form-Menu">
+                    <label for="nama">Nama Kepala Keluarga</label>
+                    <input type="text" id="nama" name="nama" required>
+                </div>
+
+                <div class="Form-Menu">
+                    <label for="nik">Nomor Induk Keluarga </label>
+                    <input type="number" id="nik" name="nik" required>
+                </div>
+
+                <div class="Form-Menu">
+                    <label for="Tanggal">Tanggal:</label>
+                    <input type="date" id="Tanggal" name="Tanggal" required>
+                </div>
+
+                <div class="Form-Menu">
+                    <label for="jenis_sampah">Jenis Sampah:</label>
+                    <select id="jenis_sampah" name="jenis_sampah" required>
+                        <option value="">Pilih Jenis Sampah</option>
+                        <option value="Plastic">Plastic</option>
+                        <option value="Kertas">Kertas</option>
+                        <option value="Logam">Logam</option>
+                        <option value="Kaca">Kaca</option>
+                    </select>
+                </div>
+
+                <div class="Form-Menu">
+                    <label for="berat">Berat (kg):</label>
+                    <input type="number" id="berat" name="berat" min="0" step="0.01" required>
+                </div>
+
+            </div>
+            <button type="submit" class="Button-Submit">Submit</button>
+        </form>
+    </main>
+</body>
+
+</html>

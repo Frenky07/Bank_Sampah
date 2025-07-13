@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Struk Setoran</title>
+    <link rel="stylesheet" href="../CSS/Struk.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-menu">
+                <a href="Dashboard.html" class="Navbar-Item">Beranda</a>
+                <a href="Setoran_Sampah.html" class="Navbar-Item">Setor</a>
+                <a href="Manajemen_Sampah.html" class="Navbar-Item">Kelola</a>
+                <a href="Struk.html" class="Navbar-Item">Struk</a>
+                <a href="#" class="Navbar-Item">Bantuan</a>
+                <a href="Login_Page.html" class="Navbar-Item" id="Navbar-Item-LogOut">Logout</a>
+            </div>
+    </nav>
+
+    <main>
+        <div class="struk-box" id="struk">
+            <div class="Struk">
+                <h2>Bank sampah</h2>
+                <p>=======================================</p>
+                <!-- <p>Nama: <span id="nama"></span></p> -->
+                <p>Nama: <span id="nama"></span></p>
+                <p>NIK: <span id="nik"></span></p>
+                <p>Jenis Sampah: <span id="jenis"></span></p>
+                <p>Berat: <span id="berat"></span> kg</p>
+                <p>Harga/kg: Rp <span id="harga"></span></p>
+                <p>=======================================</p>
+                <p><strong>Total: Rp <span id="total"></span></strong></p>
+                <p>=======================================</p>
+                <p>Tanggal: <span id="tanggal"></span></p>
+            </div>
+        </div>
+    </main>
+
+    <div class="Button-Submit">
+        <button onclick="window.print()" class="Button-Cetak">Cetak</button>
+    </div>
+
+    <script>
+        // Ambil data dari localStorage atau query parameter
+        const data = JSON.parse(localStorage.getItem("setoranTerakhir"));
+
+        if (data) {
+            document.getElementById("nama").textContent = data.petugas;
+            document.getElementById("nik").textContent = data.nasabah;
+            document.getElementById("jenis").textContent = data.jenis;
+            document.getElementById("berat").textContent = data.berat;
+            document.getElementById("harga").textContent = data.harga;
+            document.getElementById("total").textContent = data.berat * data.harga;
+            document.getElementById("tanggal").textContent = new Date().toLocaleDateString();
+        }
+    </script>
+
+</body>
+
+</html>
