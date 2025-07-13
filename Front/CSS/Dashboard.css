@@ -67,8 +67,12 @@ body {
 }
 
 .Navbar-Item:active {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: #1D7171;
     transform: translateY(0);
+}
+
+.active-nav{
+    background-color: #1D7171;
 }
 
 .section {

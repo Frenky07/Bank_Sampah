@@ -76,6 +76,11 @@ main {
     transform: translateY(0);
 }
 
+.active-nav{
+    background-color: #1D7171;
+}
+
+
 table {
     width: 100%;
     border-collapse: collapse;
