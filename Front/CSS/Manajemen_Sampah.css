@@ -5,7 +5,9 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
     line-height: 1.6;
     background-color: #9DC139;
 }
@@ -77,8 +79,20 @@ main {
 table {
     width: 100%;
     border-collapse: collapse;
-    border: 2px solid rgb(140 140 140);
+    border: 1px solid rgb(140 140 140);
     margin-top: 20px;
+}
+
+#Search{
+    width: 250px;
+    float: right;
+    border-radius: 15px;
+}
+
+.Table-Sampah::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 th,
@@ -90,9 +104,21 @@ td {
     border: 1px solid #ccc;
 }
 
+thead th:nth-child(even) {
+    background-color: #f4f1e8;
+}
+
+thead th:nth-child(odd) {
+    background-color: #fff;
+}
+
+thead th {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
 .Table-Sampah {
     margin-top: 20px;
-    /* display: none; */
 }
 
 /* ========== CSS EDIT TABLE ================ */
@@ -115,13 +141,13 @@ td {
     border-radius: 8px;
 }
 
-.Form-Edit{
+.Form-Edit {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
 }
 
-input{
+input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -139,7 +165,7 @@ select {
     font-size: 16px;
 }
 
-.Button-Edit{
+.Button-Edit {
     padding: 10px 20px;
     background-color: #4e54c8;
     color: white;
@@ -156,7 +182,7 @@ select {
 /* ============ CSS Struk ========= */
 
 .Table-Struk {
-    display: flex;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
