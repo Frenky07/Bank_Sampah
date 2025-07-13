@@ -5,10 +5,13 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     line-height: 1.6;
+    scroll-snap-type: y mandatory;
     background-color: #9DC139;
 }
+
+/* =============================== NAVBAR =================================== */
 
 .navbar {
     display: flex;
@@ -71,17 +74,28 @@ body {
     transform: translateY(0);
 }
 
-.active-nav{
+.active-nav {
     background-color: #1D7171;
 }
 
-.section {
+/* ======================= SECTION ===================================== */
+
+.Section-Content {
     min-height: 100vh;
     padding: 80px 20px;
     max-width: 1500px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+}
+
+.section {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
 }
 
 @keyframes fadeIn {
