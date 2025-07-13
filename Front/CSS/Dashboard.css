@@ -63,6 +63,7 @@ body {
 
 .navbar-item:hover::after {
     width: 80%;
+    transform: translateX(-50%) scaleX(1.2);
 }
 
 .Navbar-Item:active {
