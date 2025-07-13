@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,18 +7,14 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #ffffff;
+    background-color: #9DC139;
 }
 
-.navbar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to right, #4e54c8, #8f94fb);
-    backdrop-filter: blur(10px);
+.navbar {
+    display: flex;
     z-index: 1000;
-    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-hidden {
@@ -31,33 +27,25 @@ body {
     opacity: 1 !important;
 }
 
-.navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+.navbar-menu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 20px;
-}
-
-.navbar-menu{
-    display: flex;
-    gap: 20px;
+    padding: 10px;
+    gap: 100px;
 }
 
 .Navbar-Item {
+    border: solid;
     color: white;
     text-decoration: none;
     font-weight: 500;
-    padding: 10px 15px;
+    padding: 5px 15px;
     border-radius: 25px;
     transition: all 0.3s ease;
     position: relative;
 }
 
 .Navbar-Item:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #1D7171;
     transform: translateY(-2px);
 }
 
@@ -82,22 +70,7 @@ body {
     transform: translateY(0);
 }
 
-#Navbar-Item-LogOut {
-    margin-left: auto;
-    align-self: flex-end;
-    color: white;
-}
-
-#Navbar-Item-LogOut:hover {
-    background-color: red;
-    transform: translateY(-2px);
-}
-
-main {
-    margin-top: 70px;
-}
-
-.section{
+.section {
     min-height: 100vh;
     padding: 80px 20px;
     max-width: 1500px;
@@ -106,19 +79,12 @@ main {
     flex-direction: column;
 }
 
-.section:nth-child(odd) {
-    background-color: #f4f4f4;
-}
-
-.section:nth-child(even) {
-    background-color: #efffe4;
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -126,5 +92,5 @@ main {
 }
 
 .Section {
-    animation:fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
 }
