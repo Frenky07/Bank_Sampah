@@ -25,29 +25,6 @@ body.fade-out {
     transform: scale(0.95);
 }
 
-body.slide-in-right {
-    transform: translateX(100%);
-    opacity: 0;
-}
-body.animate-in {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-body.slide-out-left {
-    transform: translateX(-100%);
-    opacity: 0;
-}
-
-body.slide-out-right {
-    transform: translateX(100%);
-    opacity: 0;
-}
-body.slide-in-left {
-    transform: translateX(-100%);
-    opacity: 0;
-}
-
 /* =============================== NAVBAR =================================== */
 
 .navbar {
@@ -129,6 +106,7 @@ body.slide-in-left {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
 .section {
@@ -142,6 +120,19 @@ body.slide-in-left {
 
 .Section {
     animation: fadeIn 0.5s ease-in-out;
+}
+
+.Section-Content :nth-child(even) {
+    padding: 10vh;
+    background-color: #ffd700;
+    border-radius: 7vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.Section-Content :nth-child(odd) {
+    padding: 10vh;
+    background-color: #1D7171;
+    border-radius: 7vh;
 }
 
 @keyframes fadeIn {
@@ -160,8 +151,10 @@ body.slide-in-left {
 
 @media (max-width: 1024px) {
     .navbar-menu {
-        gap: 30px; /* dari 100px jadi lebih kecil */
-        flex-wrap: wrap; /* jika masih terlalu panjang, boleh wrap */
+        gap: 30px;
+        /* dari 100px jadi lebih kecil */
+        flex-wrap: wrap;
+        /* jika masih terlalu panjang, boleh wrap */
         justify-content: center;
     }
 

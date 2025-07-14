@@ -24,29 +24,6 @@ body.fade-out {
     transform: scale(0.95);
 }
 
-body.slide-in-right {
-    transform: translateX(100%);
-    opacity: 0;
-}
-body.animate-in {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-body.slide-out-left {
-    transform: translateX(-100%);
-    opacity: 0;
-}
-
-body.slide-out-right {
-    transform: translateX(100%);
-    opacity: 0;
-}
-body.slide-in-left {
-    transform: translateX(-100%);
-    opacity: 0;
-}
-
 /* =============================== NAVBAR =================================== */
 
 .navbar {
@@ -54,6 +31,10 @@ body.slide-in-left {
     z-index: 1000;
     justify-content: center;
     align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: #9DC139;
+    z-index: 1000;
 }
 
 .navbar-hidden {
@@ -70,6 +51,7 @@ body.slide-in-left {
     display: flex;
     padding: 10px;
     gap: 100px;
+    flex-wrap: nowrap;
 }
 
 .Navbar-Item {
@@ -102,11 +84,16 @@ body.slide-in-left {
 
 .navbar-item:hover::after {
     width: 80%;
+    transform: translateX(-50%) scaleX(1.2);
 }
 
 .Navbar-Item:active {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: #1D7171;
     transform: translateY(0);
+}
+
+.active-nav {
+    background-color: #1D7171;
 }
 
 main {
