@@ -1,12 +1,13 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$dbname = 'sampahtest';
+$host = "localhost";
+$user = "root";
+$pass = "";
+$dbname = "banksampah"; // ganti sesuai nama database
 
-$conn = mysqli_connect($host, $user, $password, $dbname);
+$conn = new mysqli($host, $user, $pass, $dbname);
 
-if (!$conn) {
-    die('Koneksi gagal: ' . mysqli_connect_error());
+// Cek koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
 }
 ?>

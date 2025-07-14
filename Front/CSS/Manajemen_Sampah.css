@@ -16,11 +16,17 @@ main {
     padding: 20px;
 }
 
+/* =============================== NAVBAR =================================== */
+
 .navbar {
     display: flex;
     z-index: 1000;
     justify-content: center;
     align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: #9DC139;
+    z-index: 1000;
 }
 
 .navbar-hidden {
@@ -37,6 +43,7 @@ main {
     display: flex;
     padding: 10px;
     gap: 100px;
+    flex-wrap: nowrap;
 }
 
 .Navbar-Item {
@@ -76,7 +83,7 @@ main {
     transform: translateY(0);
 }
 
-.active-nav{
+.active-nav {
     background-color: #1D7171;
 }
 
@@ -88,7 +95,7 @@ table {
     margin-top: 20px;
 }
 
-#Search{
+#Search {
     width: 250px;
     float: right;
     border-radius: 15px;
@@ -222,4 +229,30 @@ select {
 
 .Button-Cetak:hover {
     background-color: #6c61be;
+}
+
+/* ================== NAVBAR ============ */
+
+@media (max-width: 1024px) {
+    .navbar-menu {
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .Navbar-Item {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        gap: 15px;
+    }
+
+    .Navbar-Item {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
 }

@@ -1,5 +1,0 @@
-<?php
-include 'koneksi.php';
-
-
-?>

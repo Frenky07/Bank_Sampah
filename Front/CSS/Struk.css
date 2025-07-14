@@ -8,7 +8,46 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     background-color: #9DC139;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateX(0);
+    opacity: 1;
 }
+
+body.fade-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+body.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+body.slide-in-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+body.animate-in {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+body.slide-out-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+body.slide-out-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+body.slide-in-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* =============================== NAVBAR =================================== */
 
 .navbar {
     display: flex;
