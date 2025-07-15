@@ -74,7 +74,6 @@ function showEditForm(data) {
     document.getElementById("editJenisSampah").value = data.nama_jenis;
     document.getElementById("editBerat").value = data.berat;
     document.getElementById("editHarga").value = getHargaPerJenis(data.nama_jenis);
-    // document.getElementById("editIdNasabah").value = data.id_nasabah;
 
     document.querySelector(".Table-Edit").style.display = "flex";
 }
@@ -116,9 +115,8 @@ function editData() {
     const jenis = document.getElementById("editJenisSampah").value;
     const berat = parseFloat(document.getElementById("editBerat").value);
     const harga = parseFloat(document.getElementById("editHarga").value);
-    const id_nasabah = parseInt(document.getElementById("editIdNasabah").value);
 
-    if (!nama || !tanggal || !jenis || isNaN(berat) || isNaN(harga) || isNaN(id_nasabah)) {
+    if (!nama || !tanggal || !jenis || isNaN(berat) || isNaN(harga)) {
         alert("Mohon lengkapi semua data!");
         return;
     }
@@ -128,7 +126,6 @@ function editData() {
     const data = {
         id: currentEditId,
         nama,
-        id_nasabah,
         tanggal,
         jenis,
         berat,

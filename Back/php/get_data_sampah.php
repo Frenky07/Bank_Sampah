@@ -8,7 +8,7 @@ $sql = "SELECT
             s.tanggal, 
             j.nama AS nama_jenis, 
             s.berat,
-            s.total_harga
+            s.total_harga   
         FROM setoran_sampah s
         JOIN jenis_sampah j ON s.id_jenis = j.id";
 
