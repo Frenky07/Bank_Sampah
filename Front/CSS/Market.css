@@ -101,25 +101,45 @@ main {
     margin-top: 60px;
 }
 
-.struk-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* =============== Table ========================*/
 
-
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid rgb(140 140 140);
+    margin-top: 20px;
 }
 
-.Struk {
-    padding: 20px;
-    border-style: dotted;
+.Table-Market::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-h2 {
-    text-align: center;
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    background: #dbdbdb;
+    border: 1px solid #ccc;
+}
+
+thead th:nth-child(even) {
+    background-color: #f4f1e8;
+}
+
+thead th:nth-child(odd) {
+    background-color: #fff;
+}
+
+thead th {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+.Table-Market {
+    margin-top: 20px;
 }
 
 button {
