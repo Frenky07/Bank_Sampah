@@ -9,6 +9,7 @@ $id_nasabah = $data['id_nasabah'];
 $tanggal = $data['tanggal'];
 $jenis = $data['jenis'];
 $berat = $data['berat'];
+$total_harga = $data['total_harga'];
 
 // Ambil harga/kg dari tabel jenis_sampah
 $stmt = $conn->prepare("SELECT harga_per_kg, id FROM jenis_sampah WHERE nama_jenis = ?");

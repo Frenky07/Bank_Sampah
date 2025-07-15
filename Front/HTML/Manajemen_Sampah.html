@@ -34,62 +34,21 @@
                         <th scope="col">Tanggal</th>
                         <th scope="col">Jenis Sampah</th>
                         <th scope="col">Berat (kg)</th>
+                        <th scope="col">Total Harga</th>
                         <th scope="col">Edit</th>
                     </tr>
                 </thead>
                 <tbody id="dataSampah">
                     <script src="../../Back/JS/Manajemen_sampah.js"></script>
-                    <script src="../../Back/JS/Manajemen_sampah.js"></script>
-
-                    <!-- <script>
-                        document.addEventListener("DOMContentLoaded", function () {
-                            fetch("../../Back/php/get_data_sampah.php")
-                                .then(response => response.json())
-                                .then(data => {
-                                    const tbody = document.getElementById("dataSampah");
-                                    data.forEach(item => {
-                                        const tr = document.createElement("tr");
-
-                                        tr.innerHTML = `
-                                        <td>${item.nama}</td>
-                                        <td>${item.tanggal}</td>
-                                        <td>${item.nama_jenis}</td>
-                                        <td>${item.berat}</td>
-                                        <td>
-                                            <button onclick='showEditForm(${JSON.stringify(item)})'>Edit</button>
-                                            <button onclick='showStruk(${JSON.stringify(item)})'>Cetak</button>
-                                        </td>
-                                    `;
-                                        tbody.appendChild(tr);
-                                    });
-                                })
-                                .catch(error => console.error("Error fetch data:", error));
-                        });
-
-                        function showEditForm(dataStr) {
-                            const data = JSON.parse(decodeURIComponent(dataStr));
-
-                            document.getElementById("editnama").value = data.nama;
-                            document.getElementById("editTanggal").value = data.tanggal;
-                            document.getElementById("editJenisSampah").value = data.nama_jenis;
-                            document.getElementById("editBerat").value = data.berat;
-
-                            // Tampilkan form edit
-                            document.querySelector(".Table-Edit").style.display = "block";
-                        }
-
-                        function Close() {
-                            document.querySelector(".Table-Edit").style.display = "none";
-                        }
-                    </script> -->
                 </tbody>
         </div>
 
         <div class="Table-Edit">
             <div class="Table-Edit-Content">
                 <h3>Edit Data Sampah</h3>
-                <input type="text" class="Form-Edit" id="editnama" placeholder="Nama">
+                <input type="text" class="Form-Edit" id="editnama" placeholder="Nama" disabled>
                 <input type="date" class="Form-Edit" id="editTanggal">
+                <!-- <input type="hidden" id="editIdNasabah"> -->
                 <select class="Form-Edit" id="editJenisSampah">
                     <option value="">Pilih Jenis Sampah</option>
                     <option value="Plastic">Plastic</option>
@@ -98,6 +57,7 @@
                     <option value="Kaca">Kaca</option>
                 </select>
                 <input type="number" class="Form-Edit" id="editBerat" placeholder="Berat (kg)" min="0" step="0.01">
+                <input type="number" class="Form-Harga" id="editHarga" placeholder="Harga RP">
                 <button class="Button-Edit" onclick="editData()">Simpan</button>
                 <button class="Button-Edit" onclick="Close()">Batal</button>
             </div>
@@ -116,6 +76,7 @@
                 <p class="Table-Struk-in">=======================================</p>
                 <p class="Table-Struk-in">Tanggal: <span id="tanggal"></span></p>
                 <button type="submit" class="Button-Cetak">Cetak</button>
+                <button class="Button-Edit" onclick="document.querySelector('.Table-Struk').style.display='none'">Tutup</button>
             </div>
         </div>
     </main>
