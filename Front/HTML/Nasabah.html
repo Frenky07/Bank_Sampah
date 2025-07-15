@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nasabah</title>
     <link rel="stylesheet" href="../CSS/Nasabah.css">
+    <script src="../../Back/JS/Nasabah.js"></script>
 </head>
 
 <body>
@@ -25,8 +26,8 @@
     <main>
         <div style="margin-bottom: 15px; padding: 0 1rem;">
             <select id="filterSaldo">
-                <option value="semua">Semua Nasabah</option>
-                <option value="ada_saldo">Hanya yang punya saldo</option>
+                <option value="ada_saldo" class="select-saldo">Hanya yang punya saldo</option>
+                <option value="semua" class="select-saldo">Semua Nasabah</option>
             </select>
 
             <input type="text" id="searchNama" placeholder="Cari nama nasabah...">
@@ -45,9 +46,35 @@
                 </tbody>
             </table>
         </div>
-    </main>
 
-    <script src="../../Back/JS/Nasabah.js"></script>
+        <div class="Table-Tarik">
+            <div class="Tarik-Content">
+                <h3>Tarik Saldo</h3>
+                <input type="text" class="Form-Edit" id="editnama" placeholder="Nama" disabled>
+                <input type="date" class="Form-Edit" id="editTanggal">
+                <input type="number" class="Form-Edit" id="editTotal" disabled>
+                <input type="number" class="Form-Edit" id="editSaldo" placeholder="Jumlah saldo yang ingin di tarik">
+                <button class="Button-Edit" onclick="">Tarik Saldo</button>
+                <button class="Button-Edit" onclick="close()">Batal</button>
+            </div>
+        </div>
+
+        <div class="Table-Struk-Tarik">
+            <div class="Struk-Tarik">
+                <div class="Struk-Content">
+                    <h2 class="Table-Struk-in">Bank sampah</h2>
+                    <p class="Table-Struk-in">=======================================</p>
+                    <p class="Table-Struk-in">Nama: <span id="nama"></span></p>
+                    <p class="Table-Struk-in">Tanggal: <span id="tanggal"></span></p>
+                    <p class="Table-Struk-in">Total Tarik: <span id="penarikan"></span></p>
+                    <p class="Table-Struk-in">=======================================</p>
+                </div>
+                <button type="submit" class="Button-Tarik">Tarik</button>
+                <button class="Button-Tarik"
+                    onclick="document.querySelector('.Table-Struk-Tarik').style.display='none'">Tutup</button>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>

@@ -34,8 +34,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     tr.innerHTML = `
                         <td>${item.nama}</td>
                         <td>Rp ${parseInt(item.total_tabungan).toLocaleString()}</td>
-                        <td><button class="btn-edit">Edit</button></td>
                     `;
+                    const td = document.createElement("td");
+
+                    const btnEdit = document.createElement("button");
+                    btnEdit.textContent = "Edit";
+                    btnEdit.className = "btn-Edit";
+                    btnEdit.addEventListener("click", () => showEditForm(item));
+
+                    const btnCetak = document.createElement("button");
+                    btnCetak.textContent = "Tarik";
+                    btnCetak.className = "btn-Tarik";
+                    btnCetak.addEventListener("click", () => showStruk(item));
+
+                    td.appendChild(btnEdit);
+                    td.appendChild(btnCetak);
+
+                    tr.appendChild(td);
                     tbody.appendChild(tr);
                 });
             })
@@ -47,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listeners
     saldoFilter.addEventListener("change", loadData);
     searchInput.addEventListener("input", function () {
-        // Bisa pakai debounce di sini jika ingin lebih efisien
         loadData();
     });
 
