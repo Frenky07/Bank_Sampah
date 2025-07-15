@@ -10,16 +10,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 const tr = document.createElement("tr");
 
                 tr.innerHTML = `
-                    <td>${item.nama}</td>
-                    <td>${item.tanggal}</td>
-                    <td>${item.nama_jenis}</td>
-                    <td>${item.berat}</td>
-                    <td>Rp ${parseInt(item.total_harga).toLocaleString()}</td>
-                    <td>
-                        <button onclick='showEditForm(${JSON.stringify(item).replace(/'/g, "&apos;")})'>Edit</button>
-                        <button onclick='showStruk(${JSON.stringify(item).replace(/'/g, "&apos;")})'>Cetak</button>
-                    </td>
-                `;
+                <td>${item.nama}</td>
+                <td>${item.tanggal}</td>
+                <td>${item.nama_jenis}</td>
+                <td>${item.berat}</td>
+                <td>Rp ${parseInt(item.total_harga).toLocaleString()}</td>
+            `;
+                const td = document.createElement("td");
+
+                const btnEdit = document.createElement("button");
+                btnEdit.textContent = "Edit";
+                btnEdit.className = "btn-Edit";
+                btnEdit.addEventListener("click", () => showEditForm(item));
+
+                const btnCetak = document.createElement("button");
+                btnCetak.textContent = "Cetak";
+                btnCetak.className = "btn-Cetak";
+                btnCetak.addEventListener("click", () => showStruk(item));
+
+                td.appendChild(btnEdit);
+                td.appendChild(btnCetak);
+
+                tr.appendChild(td);
                 tbody.appendChild(tr);
             });
         })
@@ -38,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <title>Struk Bank Sampah</title>
                     <style>
                         body {
-                            font-family: Arial, sans-serif;
+                            font-family: Poppins, sans-serif;
                             padding: 20px;
                         }
                         .Table-Struk-in {
@@ -139,10 +151,10 @@ function editData() {
         },
         body: JSON.stringify(data)
     })
-    .then(res => res.text())
-    .then(response => {
-        alert(response);
-        location.reload();
-    })
-    .catch(err => console.error("Update error:", err));
+        .then(res => res.text())
+        .then(response => {
+            alert(response);
+            location.reload();
+        })
+        .catch(err => console.error("Update error:", err));
 }

@@ -231,6 +231,26 @@ select {
     background-color: #6c61be;
 }
 
+.btn-Edit{
+    padding: 10px 20px;
+    background-color: #4e54c8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-Cetak{
+    padding: 10px 20px;
+    background-color: #4e54c8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 /* ================== NAVBAR ============ */
 
 @media (max-width: 1024px) {
