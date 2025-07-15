@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnCetak = document.querySelector(".Button-Cetak");
     if (btnCetak) {
         btnCetak.addEventListener("click", function () {
-            const strukDiv = document.querySelector(".Table-Struk-Content");
+            const strukDiv = document.querySelector(".Struk-Content");
 
             const printWindow = window.open("", "_blank", "width=400,height=600");
             printWindow.document.write(`

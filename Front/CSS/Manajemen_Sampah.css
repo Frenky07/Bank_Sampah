@@ -285,3 +285,9 @@ select {
         font-size: 0.8rem;
     }
 }
+
+@media print{
+    .btn-Edit, .btn-Cetak {
+        display: none !important;
+    }
+}
