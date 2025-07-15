@@ -38,14 +38,57 @@
                     </tr>
                 </thead>
                 <tbody id="dataSampah">
+                    <script src="../../Back/JS/Manajemen_sampah.js"></script>
+                    <script src="../../Back/JS/Manajemen_sampah.js"></script>
+
+                    <!-- <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            fetch("../../Back/php/get_data_sampah.php")
+                                .then(response => response.json())
+                                .then(data => {
+                                    const tbody = document.getElementById("dataSampah");
+                                    data.forEach(item => {
+                                        const tr = document.createElement("tr");
+
+                                        tr.innerHTML = `
+                                        <td>${item.nama}</td>
+                                        <td>${item.tanggal}</td>
+                                        <td>${item.nama_jenis}</td>
+                                        <td>${item.berat}</td>
+                                        <td>
+                                            <button onclick='showEditForm(${JSON.stringify(item)})'>Edit</button>
+                                            <button onclick='showStruk(${JSON.stringify(item)})'>Cetak</button>
+                                        </td>
+                                    `;
+                                        tbody.appendChild(tr);
+                                    });
+                                })
+                                .catch(error => console.error("Error fetch data:", error));
+                        });
+
+                        function showEditForm(dataStr) {
+                            const data = JSON.parse(decodeURIComponent(dataStr));
+
+                            document.getElementById("editnama").value = data.nama;
+                            document.getElementById("editTanggal").value = data.tanggal;
+                            document.getElementById("editJenisSampah").value = data.nama_jenis;
+                            document.getElementById("editBerat").value = data.berat;
+
+                            // Tampilkan form edit
+                            document.querySelector(".Table-Edit").style.display = "block";
+                        }
+
+                        function Close() {
+                            document.querySelector(".Table-Edit").style.display = "none";
+                        }
+                    </script> -->
                 </tbody>
         </div>
 
         <div class="Table-Edit">
             <div class="Table-Edit-Content">
                 <h3>Edit Data Sampah</h3>
-                <input type="text" class="Form-Edit" id="editNamaKK" placeholder="Kepala Keluarga">
-                <input type="text" class="Form-Edit" id="editNIK" placeholder="Nomor Induk Keluarga">
+                <input type="text" class="Form-Edit" id="editnama" placeholder="Nama">
                 <input type="date" class="Form-Edit" id="editTanggal">
                 <select class="Form-Edit" id="editJenisSampah">
                     <option value="">Pilih Jenis Sampah</option>
