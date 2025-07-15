@@ -23,6 +23,15 @@
     </nav>
 
     <main>
+        <div style="margin-bottom: 15px; padding: 0 1rem;">
+            <select id="filterSaldo">
+                <option value="semua">Semua Nasabah</option>
+                <option value="ada_saldo">Hanya yang punya saldo</option>
+            </select>
+
+            <input type="text" id="searchNama" placeholder="Cari nama nasabah...">
+        </div>
+
         <div class="Table-Nasabah-Container">
             <table class="Table-Nasabah">
                 <thead>
@@ -32,11 +41,13 @@
                         <th scope="col">Edit</th>
                     </tr>
                 </thead>
-                <tbody id="tabungaNasabah">
+                <tbody id="tabunganNasabah">
                 </tbody>
             </table>
         </div>
     </main>
+
+    <script src="../../Back/JS/Nasabah.js"></script>
 </body>
 
 </html>
