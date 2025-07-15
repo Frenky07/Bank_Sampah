@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../CSS/Manajemen_Sampah.css">
 </head>
 
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 <body>
     <nav class="navbar">
         <div class="navbar-container">
@@ -27,7 +31,10 @@
         <!-- Edit, Delete dan cetak Struk disini bagian js -->
         <div>
             <table class="Table-Sampah">
-                <input type="search" id="Search" placeholder="Search">
+                <select id="id_jenis" name="id_jenis">
+                    <option value="">Loading...</option>
+                </select>
+                <!-- <input type="search" id="Search" placeholder="Search"> -->
                 <thead>
                     <tr>
                         <th scope="col">nama</th>
@@ -75,10 +82,30 @@
                 <p class="Table-Struk-in">=======================================</p>
                 <p class="Table-Struk-in">Tanggal: <span id="tanggal"></span></p>
                 <button type="submit" class="Button-Cetak">Cetak</button>
-                <button class="Button-Edit" onclick="document.querySelector('.Table-Struk').style.display='none'">Tutup</button>
+                <button class="Button-Edit"
+                    onclick="document.querySelector('.Table-Struk').style.display='none'">Tutup</button>
             </div>
         </div>
     </main>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "../../Back/php/get_jenis_sampah_json.php",
+                method: "GET",
+                success: function (response) {
+                    let options = '<option value="">Pilih Jenis Sampah</option>';
+                    response.forEach(function (item) {
+                        options += `<option value="${item.id}">${item.nama}</option>`;
+                    });
+                    $("#id_jenis").html(options);
+                },
+                error: function () {
+                    alert("Gagal mengambil data jenis sampah");
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
