@@ -1,41 +1,103 @@
 let currentEditId = null;
 
 document.addEventListener("DOMContentLoaded", function () {
-    // FETCH & TAMPILKAN DATA DARI DATABASE
-    fetch("../../Back/php/get_data_sampah.php")
+    const tbody = document.getElementById("dataSampah");
+    const filterJenisSelect = document.getElementById("id_jenis");
+    const filterBulanSelect = document.getElementById("filter_bulan");
+    const filterTahunSelect = document.getElementById("filter_tahun");
+
+    // FUNGSI UNTUK LOAD DATA BERDASARKAN FILTER
+    function loadData() {
+        const id_jenis = filterJenisSelect.value;
+        const bulan = filterBulanSelect.value;
+        const tahun = filterTahunSelect.value;
+
+        let url = "../../Back/php/get_data_sampah.php?";
+        const params = new URLSearchParams();
+
+        if (id_jenis) params.append("id_jenis", id_jenis);
+        if (bulan) params.append("bulan", bulan);
+        if (tahun) params.append("tahun", tahun);
+
+        fetch(url + params.toString())
+            .then(response => response.json())
+            .then(data => {
+                tbody.innerHTML = "";
+                data.forEach(item => {
+                    const tr = document.createElement("tr");
+
+                    tr.innerHTML = `
+                        <td>${item.nama}</td>
+                        <td>${item.tanggal}</td>
+                        <td>${item.nama_jenis}</td>
+                        <td>${item.berat}</td>
+                        <td>Rp ${parseInt(item.total_harga).toLocaleString()}</td>
+                    `;
+
+                    const td = document.createElement("td");
+
+                    const btnEdit = document.createElement("button");
+                    btnEdit.textContent = "Edit";
+                    btnEdit.className = "btn-Edit";
+                    btnEdit.addEventListener("click", () => showEditForm(item));
+
+                    const btnCetak = document.createElement("button");
+                    btnCetak.textContent = "Cetak";
+                    btnCetak.className = "btn-Cetak";
+                    btnCetak.addEventListener("click", () => showStruk(item));
+
+                    td.appendChild(btnEdit);
+                    td.appendChild(btnCetak);
+                    tr.appendChild(td);
+                    tbody.appendChild(tr);
+                });
+            })
+            .catch(error => console.error("Error fetch data:", error));
+    }
+
+    // ✅ PASANG EVENT LISTENER SEKALI
+    filterJenisSelect.addEventListener("change", loadData);
+    filterBulanSelect.addEventListener("change", loadData);
+    filterTahunSelect.addEventListener("change", loadData);
+
+    // ✅ FETCH BULAN & TAHUN YANG TERSEDIA
+    fetch("../../Back/php/get_tahun_bulan_sampah.php")
         .then(response => response.json())
         .then(data => {
-            const tbody = document.getElementById("dataSampah");
-            data.forEach(item => {
-                const tr = document.createElement("tr");
+            const bulanMap = {
+                "01": "Januari", "02": "Februari", "03": "Maret",
+                "04": "April", "05": "Mei", "06": "Juni",
+                "07": "Juli", "08": "Agustus", "09": "September",
+                "10": "Oktober", "11": "November", "12": "Desember"
+            };
 
-                tr.innerHTML = `
-                <td>${item.nama}</td>
-                <td>${item.tanggal}</td>
-                <td>${item.nama_jenis}</td>
-                <td>${item.berat}</td>
-                <td>Rp ${parseInt(item.total_harga).toLocaleString()}</td>
-            `;
-                const td = document.createElement("td");
+            const tahunSet = new Set();
+            const bulanSet = new Set();
 
-                const btnEdit = document.createElement("button");
-                btnEdit.textContent = "Edit";
-                btnEdit.className = "btn-Edit";
-                btnEdit.addEventListener("click", () => showEditForm(item));
-
-                const btnCetak = document.createElement("button");
-                btnCetak.textContent = "Cetak";
-                btnCetak.className = "btn-Cetak";
-                btnCetak.addEventListener("click", () => showStruk(item));
-
-                td.appendChild(btnEdit);
-                td.appendChild(btnCetak);
-
-                tr.appendChild(td);
-                tbody.appendChild(tr);
+            data.forEach(row => {
+                tahunSet.add(row.tahun);
+                bulanSet.add(String(row.bulan).padStart(2, '0'));
             });
-        })
-        .catch(error => console.error("Error fetch data:", error));
+
+            filterTahunSelect.innerHTML = '<option value="">Pilih Tahun</option>';
+            Array.from(tahunSet).sort((a, b) => b - a).forEach(tahun => {
+                const opt = document.createElement("option");
+                opt.value = tahun;
+                opt.textContent = tahun;
+                filterTahunSelect.appendChild(opt);
+            });
+
+            filterBulanSelect.innerHTML = '<option value="">Pilih Bulan</option>';
+            Array.from(bulanSet).sort().forEach(bulan => {
+                const opt = document.createElement("option");
+                opt.value = bulan;
+                opt.textContent = bulanMap[bulan] || bulan;
+                filterBulanSelect.appendChild(opt);
+            });
+        });
+
+    // ✅ FETCH DATA PERTAMA KALI
+    loadData();
 
     // CETAK STRUK
     const btnCetak = document.querySelector(".Button-Cetak");
@@ -71,12 +133,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // UBAH HARGA OTOMATIS SAAT PILIHAN JENIS BERUBAH
+    // UBAH HARGA SAAT PILIHAN JENIS SAMPH BERUBAH
     document.getElementById("editJenisSampah").addEventListener("change", function () {
         const harga = getHargaPerJenis(this.value);
         document.getElementById("editHarga").value = harga;
     });
 });
+
 
 // TAMPILKAN FORM EDIT
 function showEditForm(data) {
@@ -157,4 +220,56 @@ function editData() {
             location.reload();
         })
         .catch(err => console.error("Update error:", err));
+}
+
+function loadData() {
+    const tbody = document.getElementById("dataSampah");
+    const id_jenis = document.getElementById("id_jenis").value;
+    const bulan = document.getElementById("filter_bulan").value;
+    const tahun = document.getElementById("filter_tahun").value;
+
+    let url = "../../Back/php/get_data_sampah.php?";
+    const params = new URLSearchParams();
+
+    if (id_jenis) params.append("id_jenis", id_jenis);
+    if (bulan) params.append("bulan", bulan);
+    if (tahun) params.append("tahun", tahun);
+
+    url += params.toString();
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            tbody.innerHTML = "";
+            data.forEach(item => {
+                const tr = document.createElement("tr");
+
+                tr.innerHTML = `
+                    <td>${item.nama}</td>
+                    <td>${item.tanggal}</td>
+                    <td>${item.nama_jenis}</td>
+                    <td>${item.berat}</td>
+                    <td>Rp ${parseInt(item.total_harga).toLocaleString()}</td>
+                `;
+
+                const td = document.createElement("td");
+
+                const btnEdit = document.createElement("button");
+                btnEdit.textContent = "Edit";
+                btnEdit.className = "btn-Edit";
+                btnEdit.addEventListener("click", () => showEditForm(item));
+
+                const btnCetak = document.createElement("button");
+                btnCetak.textContent = "Cetak";
+                btnCetak.className = "btn-Cetak";
+                btnCetak.addEventListener("click", () => showStruk(item));
+
+                td.appendChild(btnEdit);
+                td.appendChild(btnCetak);
+
+                tr.appendChild(td);
+                tbody.appendChild(tr);
+            });
+        })
+        .catch(error => console.error("Error fetch data:", error));
 }

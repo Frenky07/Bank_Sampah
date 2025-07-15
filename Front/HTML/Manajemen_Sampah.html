@@ -32,8 +32,29 @@
         <div>
             <table class="Table-Sampah">
                 <select id="id_jenis" name="id_jenis">
-                    <option value="">Loading...</option>
+                    <option value="">Pilih Jenis Sampah</option>
                 </select>
+
+                <select id="filter_bulan">
+                    <option value="">Pilih Bulan</option>
+                    <option value="01">Januari</option>
+                    <option value="02">Februari</option>
+                    <option value="03">Maret</option>
+                    <option value="04">April</option>
+                    <option value="05">Mei</option>
+                    <option value="06">Juni</option>
+                    <option value="07">Juli</option>
+                    <option value="08">Agustus</option>
+                    <option value="09">September</option>
+                    <option value="10">Oktober</option>
+                    <option value="11">November</option>
+                    <option value="12">Desember</option>
+                </select>
+
+                <select id="filter_tahun">
+                    <option value="">Pilih Tahun</option>
+                </select>
+                
                 <!-- <input type="search" id="Search" placeholder="Search"> -->
                 <thead>
                     <tr>
@@ -93,19 +114,21 @@
 
     <script>
         $(document).ready(function () {
-            $.ajax({
-                url: "../../Back/php/get_jenis_sampah_json.php",
-                method: "GET",
-                success: function (response) {
-                    let options = '<option value="">Pilih Jenis Sampah</option>';
-                    response.forEach(function (item) {
-                        options += `<option value="${item.id}">${item.nama}</option>`;
-                    });
-                    $("#id_jenis").html(options);
-                },
-                error: function () {
-                    alert("Gagal mengambil data jenis sampah");
-                }
+            $(document).ready(function () {
+                $.ajax({
+                    url: "../../Back/php/get_jenis_sampah_json.php",
+                    method: "GET",
+                    success: function (response) {
+                        let options = '<option value="">Pilih Jenis Sampah</option>';
+                        response.forEach(function (item) {
+                            options += `<option value="${item.id}">${item.nama}</option>`;
+                        });
+                        $("#id_jenis").html(options);
+                    },
+                    error: function () {
+                        alert("Gagal mengambil data jenis sampah");
+                    }
+                });
             });
         });
     </script>
