@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showEditForm(item) {
-        // kosongkan atau isi sesuai fitur edit yang kamu butuhkan
+        // ke html riwayat
     }
 
     function showStruk(nasabah) {
