@@ -1,4 +1,6 @@
 let currentEditId = null;
+let currentNomorWA = null;
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const tbody = document.getElementById("dataSampah");
@@ -44,7 +46,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     const btnCetak = document.createElement("button");
                     btnCetak.textContent = "Cetak";
                     btnCetak.className = "btn-Cetak";
-                    btnCetak.addEventListener("click", () => showStruk(item));
+                    btnCetak.addEventListener("click", () => {
+                        showStruk(item);
+                        currentNomorWA = item.nomorWA; // simpan sementara
+                    });
+
 
                     td.appendChild(btnEdit);
                     td.appendChild(btnCetak);
@@ -153,9 +159,8 @@ function showEditForm(data) {
     document.querySelector(".Table-Edit").style.display = "flex";
 }
 
-// CETAK STRUK
 function showStruk(data) {
-    const hargaPerKg = getHargaPerJenis(data.nama_jenis);
+    const hargaPerKg = parseInt(data.harga_per_kg); // ambil dari database
     const total = data.berat * hargaPerKg;
 
     document.querySelector(".Table-Struk").style.display = "flex";
@@ -222,54 +227,53 @@ function editData() {
         .catch(err => console.error("Update error:", err));
 }
 
-function loadData() {
-    const tbody = document.getElementById("dataSampah");
-    const id_jenis = document.getElementById("id_jenis").value;
-    const bulan = document.getElementById("filter_bulan").value;
-    const tahun = document.getElementById("filter_tahun").value;
+function kirimStrukWA() {
+    const nama = document.getElementById("nama").innerText;
+    const jenis = document.getElementById("jenis").innerText;
+    const berat = document.getElementById("berat").innerText;
+    const harga = document.getElementById("harga").innerText;
+    const total = document.getElementById("total").innerText;
+    const tanggal = document.getElementById("tanggal").innerText;
 
-    let url = "../../Back/php/get_data_sampah.php?";
-    const params = new URLSearchParams();
+    const strukText = 
+`*Struk Setor Bank Sampah Desa*
+====================================
+*Nama:* ${nama}
+*Tanggal:* ${tanggal}
+*Jenis Sampah:* ${jenis}
+*Berat:* ${berat} Kg
+*Harga/kg:* Rp ${harga}
+*Total:* Rp ${total}
+====================================
 
-    if (id_jenis) params.append("id_jenis", id_jenis);
-    if (bulan) params.append("bulan", bulan);
-    if (tahun) params.append("tahun", tahun);
+Terima kasih telah berpartisipasi menjaga lingkungan`;
 
-    url += params.toString();
 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            tbody.innerHTML = "";
-            data.forEach(item => {
-                const tr = document.createElement("tr");
+    // Jika nomor sudah ada
+    if (currentNomorWA && currentNomorWA.trim() !== "") {
+        const urlWA = `https://wa.me/${currentNomorWA}?text=${encodeURIComponent(strukText)}`;
+        window.open(urlWA, '_blank');
+        return;
+    }
 
-                tr.innerHTML = `
-                    <td>${item.nama}</td>
-                    <td>${item.tanggal}</td>
-                    <td>${item.nama_jenis}</td>
-                    <td>${item.berat}</td>
-                    <td>Rp ${parseInt(item.total_harga).toLocaleString()}</td>
-                `;
+    // Jika belum ada, minta input & simpan ke database
+    const inputWA = prompt("Nomor WhatsApp belum tersedia. Masukkan nomor (cth: 6281234567890):");
+    if (!inputWA) return;
 
-                const td = document.createElement("td");
-
-                const btnEdit = document.createElement("button");
-                btnEdit.textContent = "Edit";
-                btnEdit.className = "btn-Edit";
-                btnEdit.addEventListener("click", () => showEditForm(item));
-
-                const btnCetak = document.createElement("button");
-                btnCetak.textContent = "Cetak";
-                btnCetak.className = "btn-Cetak";
-                btnCetak.addEventListener("click", () => showStruk(item));
-
-                td.appendChild(btnEdit);
-                td.appendChild(btnCetak);
-
-                tr.appendChild(td);
-                tbody.appendChild(tr);
-            });
+    // Simpan ke database
+    fetch("../../Back/php/update_nomor_wa.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nama, nomorWA: inputWA })
+    })
+        .then(res => res.text())
+        .then(msg => {
+            alert(msg);
+            const urlWA = `https://wa.me/${inputWA}?text=${encodeURIComponent(strukText)}`;
+            window.open(urlWA, '_blank');
         })
-        .catch(error => console.error("Error fetch data:", error));
+        .catch(err => {
+            alert("Gagal simpan nomor WA!");
+            console.error(err);
+        });
 }

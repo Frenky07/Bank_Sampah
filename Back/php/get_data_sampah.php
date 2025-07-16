@@ -29,10 +29,13 @@ $sql = "SELECT
             s.nama, 
             s.tanggal, 
             j.nama AS nama_jenis, 
+            j.harga AS harga_per_kg, 
             s.berat,
-            s.total_harga   
+            s.total_harga,
+            n.nomorWA
         FROM setoran_sampah s
         JOIN jenis_sampah j ON s.id_jenis = j.id
+        JOIN nasabah n ON s.nama = n.nama
         $whereClause
         ORDER BY s.tanggal DESC";
 
@@ -44,5 +47,4 @@ while ($row = $result->fetch_assoc()) {
 }
 
 echo json_encode($data);
-
 ?>
