@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "banksampah"; // ganti sesuai nama database
+$dbname = "bank_sampah"; // ganti sesuai nama database
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
-$path = "C:\xampp\htdocs\Project_KKN\Back\php\DATA PENDUDUK ASEMPAPAK RW 001 (TAHUN 2025).csv";
+$path = "C:\xampp\htdocs\Project_KKN\Back\php\data2.csv";
 
 $csvFile = fopen("data2.csv", "r");
 

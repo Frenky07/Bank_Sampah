@@ -34,8 +34,13 @@ body.fade-out {
     align-items: center;
     position: sticky;
     top: 0;
-    background-color: #9DC139;
+    /* background-color: #9DC139; */
     z-index: 1000;
+    background: rgba(157, 193, 57, 0.32);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.4px);
+    -webkit-backdrop-filter: blur(2.4px);
+    border: 1px solid rgba(157, 193, 57, 0.3);
 }
 
 .navbar-hidden {
