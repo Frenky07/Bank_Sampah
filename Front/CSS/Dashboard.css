@@ -140,6 +140,7 @@ body.fade-out {
     border-radius: 7vh;
 }
 
+
 @keyframes fadeIn {
     from {
         opacity: 0;
