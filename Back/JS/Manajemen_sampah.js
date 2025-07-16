@@ -154,10 +154,14 @@ function showEditForm(data) {
     document.getElementById("editTanggal").value = data.tanggal;
     document.getElementById("editJenisSampah").value = data.nama_jenis;
     document.getElementById("editBerat").value = data.berat;
-    document.getElementById("editHarga").value = getHargaPerJenis(data.nama_jenis);
+
+    const harga = getHargaPerJenis(data.nama_jenis); // dari map lokal
+    document.getElementById("editHarga").value = harga;
+    document.getElementById("labelHargaPerKg").textContent = `Harga per kg untuk ${data.nama_jenis}: Rp ${harga.toLocaleString()}`;
 
     document.querySelector(".Table-Edit").style.display = "flex";
 }
+
 
 function showStruk(data) {
     const hargaPerKg = parseInt(data.harga_per_kg); // ambil dari database
@@ -177,7 +181,7 @@ function getHargaPerJenis(jenis) {
     const hargaMap = {
         Plastic: 2000,
         Kertas: 1000,
-        Logam: 4000,
+        Logam: 12500,
         Kaca: 3000
     };
     return hargaMap[jenis] || 0;
