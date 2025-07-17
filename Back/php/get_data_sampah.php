@@ -4,19 +4,32 @@ include 'koneksi.php';
 
 $where = [];
 
+// Filter berdasarkan ID Jenis (untuk dashboard/filter jenis)
 if (isset($_GET['id_jenis']) && $_GET['id_jenis'] !== '') {
     $id_jenis = $_GET['id_jenis'];
     $where[] = "s.id_jenis = '$id_jenis'";
 }
 
+// Filter berdasarkan bulan dan tahun
 if (isset($_GET['bulan']) && $_GET['bulan'] !== '') {
     $bulan = $_GET['bulan'];
     $where[] = "MONTH(s.tanggal) = '$bulan'";
 }
-
 if (isset($_GET['tahun']) && $_GET['tahun'] !== '') {
     $tahun = $_GET['tahun'];
     $where[] = "YEAR(s.tanggal) = '$tahun'";
+}
+
+// Filter berdasarkan nama nasabah
+if (isset($_GET['nama_nasabah']) && $_GET['nama_nasabah'] !== '') {
+    $nama_nasabah = $_GET['nama_nasabah'];
+    $where[] = "s.nama = '$nama_nasabah'";
+}
+
+// ✅ Tambahan: filter berdasarkan id_nasabah
+if (isset($_GET['id_nasabah']) && $_GET['id_nasabah'] !== '') {
+    $id_nasabah = $_GET['id_nasabah'];
+    $where[] = "n.id = '$id_nasabah'";
 }
 
 $whereClause = "";

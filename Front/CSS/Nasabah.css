@@ -277,7 +277,16 @@ input {
 
 /* ========================== Riwayat ============================= */
 
-.Table-Riwayat {
-    /* position: fixed;
-    background: rgba(0, 0, 0, 0.5); */
+.Button-Edit {
+    padding: 10px 20px;
+    background-color: #4e54c8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Button-Edit:hover {
+    background-color: #6c61be;
 }

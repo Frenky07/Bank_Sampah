@@ -46,6 +46,27 @@
                 <tbody></tbody>
             </table>
         </div>
+
+        <div class="Table-Struk">
+            <div class="Table-Struk-Content">
+                <div class="Struk-Content">
+                    <h2 class="Table-Struk-in">Bank sampah</h2>
+                    <p class="Table-Struk-in">=======================================</p>
+                    <p class="Table-Struk-in">Nama: <span id="nama-Struk"></span></p>
+                    <p class="Table-Struk-in">Jenis Sampah: <span id="jenis-Struk"></span></p>
+                    <p class="Table-Struk-in">Berat: <span id="berat-Struk"></span> kg</p>
+                    <p class="Table-Struk-in">Harga/kg: Rp <span id="harga-Struk"></span></p>
+                    <p class="Table-Struk-in">=======================================</p>
+                    <p class="Table-Struk-in"><strong>Total: Rp <span id="total-Struk"></span></strong></p>
+                    <p class="Table-Struk-in">=======================================</p>
+                    <p class="Table-Struk-in">Tanggal: <span id="tanggal-Struk"></span></p>
+                </div>
+                <button type="submit" class="Button-Cetak">Cetak</button>
+                <button id="btn-kirim-wa" class="Button-Edit" onclick="kirimStrukWA()">Kirim via WhatsApp</button>
+                <button id="btn-tutup-struk" class="Button-Edit"
+                    onclick="document.querySelector('.Table-Struk').style.display='none'">Tutup</button>
+            </div>
+        </div>
     </div>
     <script src="../../Back/JS/Riwayat.js"></script>
 </body>

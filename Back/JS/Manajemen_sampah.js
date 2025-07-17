@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("Error fetch data:", error));
     }
 
-    // ✅ PASANG EVENT LISTENER SEKALI
+
     filterJenisSelect.addEventListener("change", loadData);
     filterBulanSelect.addEventListener("change", loadData);
     filterTahunSelect.addEventListener("change", loadData);
