@@ -17,7 +17,7 @@ if (!empty($where)) {
     $whereClause = "WHERE " . implode(" AND ", $where);
 }
 
-$query = "SELECT id, nama, total_tabungan FROM nasabah $whereClause ORDER BY nama ASC";
+$query = "SELECT id, nama, total_tabungan, nomorWA FROM nasabah $whereClause ORDER BY nama ASC";
 
 $result = $conn->query($query);
 

@@ -6,8 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const saldoFilter = document.getElementById("filterSaldo");
     const searchInput = document.getElementById("searchNama");
     const tarikPopup = document.querySelector(".Table-Tarik");
+    const nomorPopup = document.querySelector("Table-Nomor");
+    const btnNomor = document.getElementById("btnEditNomor");
     const btnTarik = document.getElementById("btnTarikSaldo");
     const btnBatal = document.querySelector(".Table-Tarik .Button-Edit:nth-of-type(2)");
+    const btnBatal1 = document.getElementById("btnBatal_nomor");
 
     function loadData() {
         const params = new URLSearchParams();
@@ -38,11 +41,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     tr.innerHTML = `
                         <td>${item.nama}</td>
                         <td>Rp ${parseInt(item.total_tabungan).toLocaleString()}</td>
+                        <td>${item.nomorWA}</td>
                     `;
                     const td = document.createElement("td");
 
+                    const btnNomor = document.createElement("button");
+                    btnNomor.textContent = "Edit Nomor";
+                    btnNomor.className = "btn-Edit"
+                    btnNomor.addEventListener("click", () => showNomor(item));
+
                     const btnEdit = document.createElement("button");
-                    btnEdit.textContent = "Edit";
+                    btnEdit.textContent = "Riwayat";
                     btnEdit.className = "btn-Edit";
                     btnEdit.addEventListener("click", () => showEditForm(item));
 
@@ -51,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     btnTarik.className = "btn-Tarik";
                     btnTarik.addEventListener("click", () => showStruk(item));
 
+                    td.appendChild(btnNomor);
                     td.appendChild(btnEdit);
                     td.appendChild(btnTarik);
 
@@ -67,6 +77,27 @@ document.addEventListener("DOMContentLoaded", function () {
         // ke html riwayat
     }
 
+    function showNomor(item) {
+        document.querySelector(".Table-Nomor").style.display = "flex";
+        document.getElementById("editnama_nomor").value = item.nama;
+        document.getElementById("tampilnomor").value = item.nomorWA;
+        document.getElementById("editNomor").value = "";
+        currentNasabah = item;
+    }
+
+    function showEditForm(item) {
+        // Simpan data nasabah ke localStorage
+        localStorage.setItem("selectedNasabah", JSON.stringify(item));
+
+        // Pindah ke halaman riwayat.html
+        window.location.href = "riwayat.html";
+    }
+
+
+    function close_nomor() {
+        document.querySelector(".Table-Nomor").style.display = "none";
+    }
+
     function showStruk(nasabah) {
         currentNasabah = nasabah;
         document.getElementById("editnama").value = nasabah.nama;
@@ -78,6 +109,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function closePopup() {
         tarikPopup.style.display = "none";
+    }
+
+    // ✅ Pastikan tombol dengan ID btnTarikSaldo sudah ada di HTML
+    if (btnNomor) {
+        btnNomor.addEventListener("click", function () {
+            const nomor = document.getElementById("editNomor").value;
+            const nomorBaru = parseInt(document.getElementById("editNomor").value);
+
+            if (!nomor) {
+                alert("Nomor belum dipilih.");
+                return;
+            }
+
+            if (isNaN(nomorBaru) || nomorBaru <= 0) {
+                alert("Masukkan nomor yang valid.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("id", currentNasabah.id);
+            formData.append("nomorWA", nomor);
+
+            fetch("../../Back/php/edit_nomor.php", {
+                method: "POST",
+                body: formData
+            })
+                .then(res => res.text())
+                .then(response => {
+                    alert(response);
+                    closePopup();
+                    loadData(); // ✅ Hanya reload data, tidak reload seluruh halaman
+                })
+                .catch(error => {
+                    console.error("Gagal edit:", error);
+                    alert("Gagal melakukan perubahan.");
+                });
+        });
     }
 
     // ✅ Pastikan tombol dengan ID btnTarikSaldo sudah ada di HTML
@@ -127,6 +195,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // ✅ Tombol batal di form tarik
     if (btnBatal) {
         btnBatal.addEventListener("click", closePopup);
+    }
+
+    if (btnBatal1) {
+        btnBatal1.addEventListener("click", close_nomor)
     }
 
     saldoFilter.addEventListener("change", loadData);

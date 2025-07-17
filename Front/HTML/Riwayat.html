@@ -10,23 +10,42 @@
     <div class="Riwayat-Container">
         <div class="Riwayat-Content">
             <h1 class="Nama-Nasabah" id="nama">Nama: </h1>
-            <h3 class="Ttl-Nasabah" id="ttl">Tempat Tanggal Lahir: </h3>
-            <h3 class="Status-Masabah" id="status">Status: </h3>
-            <h3 class="Hub-Nasabah" id="hub-keluarga">Hubungan Keluarga: </h3>
-            <h3 class="RT-RW" id="rumah">RT/RW: </h3>
+            <h3 class="Jumlah-Tabungan" id="jumlah-tabungan">Jumlah Tabungan:</h3>
         </div>
-        <table class="Table-Nasabah">
-            <thead>
-                <tr>
-                    <th>Jenis sampah</th>
-                    <th>Berat(KG)</th>
-                    <th>Total Harga</th>
-                    <th>Tanggal Setor</th>
-                    <th>Edit</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+
+        <div class="Button-Edit-Riwayat">
+            <button class="btn-Edit" id="btn-setor">Riwayat Setor</button>
+            <button class="btn-Edit" id="btn-Riwayat">Riwayat Tarik</button>
+            <button class="btn-Edit" id="btn-kembali">Kembali</button>
+        </div>
+
+        <div>
+            <table class="Table-Nasabah" id="table-setor">
+                <thead>
+                    <tr>
+                        <th>Jenis sampah</th>
+                        <th>Berat(KG)</th>
+                        <th>Total Harga</th>
+                        <th>Tanggal Setor</th>
+                        <th>Cetak</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div>
+            <table class="Table-Nasabah-Tarik" id="Table-Tarik">
+                <thead>
+                    <tr>
+                        <th>Jumlah Tarik</th>
+                        <th>Tanggal Tarik</th>
+                        <th>Cetak</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
     <script src="../../Back/JS/Riwayat.js"></script>
 </body>

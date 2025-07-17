@@ -39,7 +39,8 @@
                     <tr>
                         <th scope="col">Nasabah</th>
                         <th scope="col">Total Tabungan</th>
-                        <th scope="col">Edit</th>
+                        <th scope="col">Nomor WA </th>
+                        <th scope="col">Tindakan</th>
                     </tr>
                 </thead>
                 <tbody id="tabunganNasabah">
@@ -56,6 +57,17 @@
                 <input type="number" class="Form-Edit" id="editSaldo" placeholder="Jumlah saldo yang ingin di tarik">
                 <button class="Button-Edit" id="btnTarikSaldo">Tarik Saldo</button>
                 <button class="Button-Edit" onclick="close()">Batal</button>
+            </div>
+        </div>
+
+        <div class="Table-Nomor">
+            <div class="Nomor-Content">
+                <h3>Edit Nomor WA</h3>
+                <input type="text" class="Form-Edit" id="editnama_nomor" placeholder="Nama" disabled>
+                <input type="text" class="Form-Edit" id="tampilnomor" placeholder="Nomor" disabled>
+                <input type="text" name="Form-Edit" id="editNomor" placeholder="Nomor Baru">
+                <button class="btn-Edit" id="btnEditNomor">Edit Nomor</button>
+                <button class="btn-Edit" onclick="close_nomor()" id="btnBatal_nomor">Batal</button>
             </div>
         </div>
     </main>

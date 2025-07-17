@@ -25,6 +25,11 @@ body.fade-out {
     transform: scale(0.95);
 }
 
+.Button-Edit-Riwayat {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
 /* ================================================ */
 
 .Riwayat-Content{
@@ -32,6 +37,7 @@ body.fade-out {
     border-radius: 20px;
     opacity: 0.90;
     padding: 20px;
+    color: #fff;
 }
 
 /* ================ Table ====================== */
@@ -50,4 +56,37 @@ td {
     border-bottom: 1px solid #ddd;
     background: #dbdbdb;
     border: 1px solid #ccc;
+}
+
+/* ============= Button ====================== */
+
+.btn-Edit {
+    padding: 10px 20px;
+    background-color: #4e54c8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn-Edit:hover {
+    background-color: #6c61be;
+}
+
+.Table-Nasabah{
+    display: none;
+    width: 100%;
+    max-width: 200vh;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.Table-Nasabah-Tarik{
+    display: none;
+    width: 100%;
+    max-width: 200vh;
+    margin: 20px auto;
+    border-collapse: collapse;
 }
