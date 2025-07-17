@@ -25,13 +25,62 @@
 
     <main>
         <div class="Section-Content">
-            <div class="Section-1">
-                <section class="section" id="Section-1"></section>
-            </div>
+            <section class="section" id="Section-1">
+                <h2>Distribusi Jenis Sampah</h2>
+                <canvas id="pieChart" width="400" height="400"></canvas>
+            </section>
             <section class="section" id="Section-2"></section>
             <section class="section" id="Section-3"></section>
         </div>
     </main>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script >
+        fetch('../../Back/PHP/get_chart_data.php')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(item => item.jenis);
+                const values = data.map(item => item.berat);
+                Chart.defaults.font.size = 25;
+
+
+                const ctx = document.getElementById('pieChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: values,
+                            backgroundColor: [
+                                '#9EE493',
+                                '#D5E68D',
+                                '#F7E3AF',
+                                '#B49A67',
+                                '#BF3100',
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Distribusi Sampah Berdasarkan Jenis',
+                                font:{
+                                    size: 30
+                                }
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Gagal ambil data:', error));
+    </script>
+
+
 </body>
 
 </html>
