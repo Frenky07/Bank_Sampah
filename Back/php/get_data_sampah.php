@@ -4,7 +4,7 @@ include 'koneksi.php';
 
 $where = [];
 
-// Filter berdasarkan ID Jenis (untuk dashboard/filter jenis)
+
 if (isset($_GET['id_jenis']) && $_GET['id_jenis'] !== '') {
     $id_jenis = $_GET['id_jenis'];
     $where[] = "s.id_jenis = '$id_jenis'";
