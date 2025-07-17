@@ -1,14 +1,12 @@
 let currentEditId = null;
 let currentNomorWA = null;
 
-
 document.addEventListener("DOMContentLoaded", function () {
     const tbody = document.getElementById("dataSampah");
     const filterJenisSelect = document.getElementById("id_jenis");
     const filterBulanSelect = document.getElementById("filter_bulan");
     const filterTahunSelect = document.getElementById("filter_tahun");
 
-    // FUNGSI UNTUK LOAD DATA BERDASARKAN FILTER
     function loadData() {
         const id_jenis = filterJenisSelect.value;
         const bulan = filterBulanSelect.value;
@@ -48,9 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     btnCetak.className = "btn-Cetak";
                     btnCetak.addEventListener("click", () => {
                         showStruk(item);
-                        currentNomorWA = item.nomorWA; // simpan sementara
+                        currentNomorWA = item.nomorWA;
                     });
-
 
                     td.appendChild(btnEdit);
                     td.appendChild(btnCetak);
@@ -61,12 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("Error fetch data:", error));
     }
 
-
     filterJenisSelect.addEventListener("change", loadData);
     filterBulanSelect.addEventListener("change", loadData);
     filterTahunSelect.addEventListener("change", loadData);
 
-    // ✅ FETCH BULAN & TAHUN YANG TERSEDIA
     fetch("../../Back/php/get_tahun_bulan_sampah.php")
         .then(response => response.json())
         .then(data => {
@@ -102,10 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
-    // ✅ FETCH DATA PERTAMA KALI
     loadData();
 
-    // CETAK STRUK
     const btnCetak = document.querySelector(".Button-Cetak");
     if (btnCetak) {
         btnCetak.addEventListener("click", function () {
@@ -139,15 +132,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // UBAH HARGA SAAT PILIHAN JENIS SAMPH BERUBAH
     document.getElementById("editJenisSampah").addEventListener("change", function () {
         const harga = getHargaPerJenis(this.value);
         document.getElementById("editHarga").value = harga;
     });
 });
 
-
-// TAMPILKAN FORM EDIT
 function showEditForm(data) {
     currentEditId = data.id;
     document.getElementById("editnama").value = data.nama;
@@ -155,16 +145,15 @@ function showEditForm(data) {
     document.getElementById("editJenisSampah").value = data.nama_jenis;
     document.getElementById("editBerat").value = data.berat;
 
-    const harga = getHargaPerJenis(data.nama_jenis); // dari map lokal
+    const harga = getHargaPerJenis(data.nama_jenis);
     document.getElementById("editHarga").value = harga;
     document.getElementById("labelHargaPerKg").textContent = `Harga per kg untuk ${data.nama_jenis}: Rp ${harga.toLocaleString()}`;
 
     document.querySelector(".Table-Edit").style.display = "flex";
 }
 
-
 function showStruk(data) {
-    const hargaPerKg = parseInt(data.harga_per_kg); // ambil dari database
+    const hargaPerKg = parseInt(data.harga_per_kg);
     const total = data.berat * hargaPerKg;
 
     document.querySelector(".Table-Struk").style.display = "flex";
@@ -176,7 +165,6 @@ function showStruk(data) {
     document.getElementById("tanggal").innerText = data.tanggal;
 }
 
-// FUNGSI HARGA PER JENIS
 function getHargaPerJenis(jenis) {
     const hargaMap = {
         Plastic: 2000,
@@ -187,12 +175,10 @@ function getHargaPerJenis(jenis) {
     return hargaMap[jenis] || 0;
 }
 
-// TUTUP FORM EDIT
 function Close() {
     document.querySelector(".Table-Edit").style.display = "none";
 }
 
-// SIMPAN HASIL EDIT
 function editData() {
     const nama = document.getElementById("editnama").value;
     const tanggal = document.getElementById("editTanggal").value;
@@ -239,8 +225,8 @@ function kirimStrukWA() {
     const total = document.getElementById("total").innerText;
     const tanggal = document.getElementById("tanggal").innerText;
 
-    const strukText = 
-`*Struk Setor Bank Sampah Desa*
+    const strukText =
+        `*Struk Setor Bank Sampah Desa*
 ====================================
 *Nama:* ${nama}
 *Tanggal:* ${tanggal}
@@ -252,19 +238,15 @@ function kirimStrukWA() {
 
 Terima kasih telah berpartisipasi menjaga lingkungan`;
 
-
-    // Jika nomor sudah ada
     if (currentNomorWA && currentNomorWA.trim() !== "") {
         const urlWA = `https://wa.me/${currentNomorWA}?text=${encodeURIComponent(strukText)}`;
         window.open(urlWA, '_blank');
         return;
     }
 
-    // Jika belum ada, minta input & simpan ke database
     const inputWA = prompt("Nomor WhatsApp belum tersedia. Masukkan nomor (cth: 6281234567890):");
     if (!inputWA) return;
 
-    // Simpan ke database
     fetch("../../Back/php/update_nomor_wa.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
