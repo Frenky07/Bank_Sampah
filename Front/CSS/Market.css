@@ -24,6 +24,24 @@ body.fade-out {
     transform: scale(0.95);
 }
 
+.Pajak-Sampah {
+    background-color: #ddd;
+    border-radius: 3vh;
+}
+
+.Pajak-Content {
+    padding: 5px;
+    margin: 5px;
+}
+
+.Pajak-Content input{
+    width: 10vh;
+}
+
+.Pajak-Content input, label {
+    margin-top: 1vh;
+}
+
 /* =============================== NAVBAR =================================== */
 
 .navbar {
