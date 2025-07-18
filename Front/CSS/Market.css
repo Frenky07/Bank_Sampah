@@ -25,7 +25,7 @@ body.fade-out {
 }
 
 .Pajak-Sampah {
-    background-color: #ddd;
+    background-color: #fff;
     border-radius: 3vh;
     width: 30vh;
 }
@@ -157,6 +157,8 @@ table {
     border-collapse: collapse;
     border: 1px solid rgb(140 140 140);
     margin-top: 20px;
+    border-color: #1D7171;
+    border-width: 4px;
 }
 
 .Table-Market::after {
@@ -171,7 +173,15 @@ td {
     text-align: left;
     border-bottom: 1px solid #ddd;
     background: #dbdbdb;
-    border: 1px solid #ccc;
+    border: 1px solid #1D7
+}
+
+tbody td:nth-child(odd){
+    background-color: #fff;
+}
+
+tbody td:nth-child(even){
+    background-color: #f4f1e8;
 }
 
 thead th:nth-child(even) {

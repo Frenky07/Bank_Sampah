@@ -73,6 +73,18 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
+    function showStrukTarik(data) {
+        const strukTarik = document.querySelector(".Table-Struk-Tarik");
+        if (!strukTarik) return;
+
+        document.getElementById("nama-Struk-Tarik").innerText = data.nama || nasabah.nama;
+        document.getElementById("total-Struk-Tarik").innerText = parseInt(data.penarikan).toLocaleString();
+        document.getElementById("tanggal-Struk-Tarik").innerText = data.tanggal;
+
+        strukTarik.style.display = "flex";
+    }
+
+
     function showEditForm(item) {
         // ke html riwayat
     }

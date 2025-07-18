@@ -98,6 +98,8 @@ table {
     border-collapse: collapse;
     border: 1px solid rgb(140 140 140);
     margin-top: 20px;
+    border-color: #1D7171;
+    border-width: 4px;
 }
 
 #Search {
@@ -118,7 +120,7 @@ td {
     text-align: left;
     border-bottom: 1px solid #ddd;
     background: #dbdbdb;
-    border: 1px solid #ccc;
+    border: 1px solid #1D7171;
 }
 
 thead th:nth-child(even) {
@@ -127,6 +129,14 @@ thead th:nth-child(even) {
 
 thead th:nth-child(odd) {
     background-color: #fff;
+}
+
+tbody td:nth-child(odd){
+    background-color: #fff;
+}
+
+tbody td:nth-child(even){
+    background-color: #f4f1e8;
 }
 
 thead th {

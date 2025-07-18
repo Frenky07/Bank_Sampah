@@ -26,17 +26,25 @@
     <main>
         <div class="Section-Content">
             <section class="section" id="Section-1">
-                <h2>Distribusi Jenis Sampah</h2>
+                <div>
+                    <h4>Distribusi Sampah</h4>
+                    <select class="custom-select">
+                        <option>Pilih Tahun</option>
+                    </select>
+                </div>
                 <canvas id="pieChart" width="400" height="400"></canvas>
             </section>
-            <section class="section" id="Section-2"></section>
+            <section class="section" id="Section-2">
+                <!-- <img src="../../Images/20250712_205144.jpg"> -->
+                <!-- <img src="../../Images/20250712_122757.jpg"> -->
+            </section>
             <section class="section" id="Section-3"></section>
         </div>
     </main>
-    
+
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script >
+    <script>
         fetch('../../Back/PHP/get_chart_data.php')
             .then(response => response.json())
             .then(data => {
@@ -67,7 +75,7 @@
                             title: {
                                 display: true,
                                 text: 'Distribusi Sampah Berdasarkan Jenis',
-                                font:{
+                                font: {
                                     size: 30
                                 }
                             },

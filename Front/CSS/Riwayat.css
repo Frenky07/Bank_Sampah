@@ -46,6 +46,8 @@ table {
     border-collapse: collapse;
     border: 1px solid rgb(140 140 140);
     margin-top: 20px;
+    border-color: #1D7171;
+    border-width: 4px;
 }
 
 th,
@@ -54,7 +56,28 @@ td {
     text-align: left;
     border-bottom: 1px solid #ddd;
     background: #dbdbdb;
-    border: 1px solid #ccc;
+    border: 1px solid #1D7171;
+}
+
+tbody td:nth-child(odd){
+    background-color: #fff;
+}
+
+tbody td:nth-child(even){
+    background-color: #f4f1e8;
+}
+
+thead th:nth-child(even) {
+    background-color: #f4f1e8;
+}
+
+thead th:nth-child(odd) {
+    background-color: #fff;
+}
+
+thead th {
+    background-color: #ecf0f1;
+    color: #2c3e50;
 }
 
 /* ============= Button ====================== */
@@ -195,6 +218,39 @@ button {
 
 .Button-Edit:hover {
     background-color: #6c61be;
+}
+
+/* ============ CSS Struk ========= */
+
+.Table-Struk {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: auto;
+}
+
+.Table-Struk-Content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 90vw; 
+    max-height: 90vh;
+    width: 400px; 
+    overflow-y: auto;
+    position: relative;
+}
+
+.Table-Struk-in {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 @media print {

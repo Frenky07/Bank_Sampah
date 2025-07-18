@@ -34,13 +34,13 @@ body.fade-out {
     align-items: center;
     position: sticky;
     top: 0;
-    /* background-color: #9DC139; */
     z-index: 1000;
     background: rgba(157, 193, 57, 0.32);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2.4px);
     -webkit-backdrop-filter: blur(2.4px);
     border: 1px solid rgba(157, 193, 57, 0.3);
+    /* background-color: #9DC139; */
 }
 
 .navbar-hidden {
@@ -129,7 +129,7 @@ body.fade-out {
 
 .Section-Content :nth-child(even) {
     padding: 10vh;
-    background-color: #ffd700;
+    background-color: #fff;
     border-radius: 7vh;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -138,6 +138,10 @@ body.fade-out {
     padding: 10vh;
     background-color: #1D7171;
     border-radius: 7vh;
+}
+
+h4 {
+    color: #fff;
 }
 
 
@@ -158,10 +162,10 @@ body.fade-out {
 @media (max-width: 1024px) {
     .navbar-menu {
         gap: 30px;
-        /* dari 100px jadi lebih kecil */
         flex-wrap: wrap;
-        /* jika masih terlalu panjang, boleh wrap */
         justify-content: center;
+        /* dari 100px jadi lebih kecil */
+        /* jika masih terlalu panjang, boleh wrap */
     }
 
     .Navbar-Item {
@@ -182,3 +186,14 @@ body.fade-out {
 }
 
 /* ================================= */
+
+select {
+    height: 25vh;
+    font-size: 27px;
+    /* width: 50vh; */
+    /* size: 1vh; */
+}
+
+/* img {
+    width: 70%;
+} */

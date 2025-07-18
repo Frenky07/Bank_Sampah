@@ -141,6 +141,14 @@ td {
     border: 1px solid #ccc;
 }
 
+tbody td:nth-child(odd){
+    background-color: #fff;
+}
+
+tbody td:nth-child(even){
+    background-color: #f4f1e8;
+}
+
 thead th:nth-child(even) {
     background-color: #f4f1e8;
 }
