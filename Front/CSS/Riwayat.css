@@ -222,7 +222,7 @@ button {
 
 /* ============ CSS Struk ========= */
 
-.Table-Struk {
+.Table-Struk-Tarik {
     display: none;
     position: fixed;
     top: 0;
@@ -236,7 +236,7 @@ button {
     overflow: auto;
 }
 
-.Table-Struk-Content {
+.Table-Struk-Content-Tarik {
     background: white;
     padding: 20px;
     border-radius: 8px;
@@ -247,7 +247,7 @@ button {
     position: relative;
 }
 
-.Table-Struk-in {
+.Table-Struk-in-Tarik {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;

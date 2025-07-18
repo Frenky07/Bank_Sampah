@@ -50,7 +50,7 @@
         <div class="Table-Struk">
             <div class="Table-Struk-Content">
                 <div class="Struk-Content">
-                    <h2 class="Table-Struk-in">Bank sampah</h2>
+                    <h2 class="Table-Struk-in">Bank Sampah (Setor)</h2>
                     <p class="Table-Struk-in">=======================================</p>
                     <p class="Table-Struk-in">Nama: <span id="nama-Struk"></span></p>
                     <p class="Table-Struk-in">Jenis Sampah: <span id="jenis-Struk"></span></p>
@@ -67,6 +67,25 @@
                     onclick="document.querySelector('.Table-Struk').style.display='none'">Tutup</button>
             </div>
         </div>
+
+        <div class="Table-Struk-Tarik">
+            <div class="Table-Struk-Content-Tarik">
+                <div class="Struk-Content-Tarik">
+                    <h2 class="Table-Struk-in-Tarik">Bank Sampah (Tarik)</h2>
+                    <p class="Table-Struk-in-Tarik">=======================================</p>
+                    <p class="Table-Struk-in-Tarik">Nama: <span id="nama-Struk-tarik"></span></p>
+                    <p class="Table-Struk-in-Tarik">=======================================</p>
+                    <p class="Table-Struk-in-Tarik"><strong>Total: Rp <span id="total-tarik-saldo"></span></strong></p>
+                    <p class="Table-Struk-in-Tarik">=======================================</p>
+                    <p class="Table-Struk-in-Tarik">Tanggal: <span id="tanggal-Struk-tarik"></span></p>
+                </div>
+                <button type="submit" class="Button-Cetak-Tarik">Cetak</button>
+                <button id="btn-kirim-wa-tarik">Kirim via WhatsApp</button>
+                <button id="btn-tutup-struk-tarik" class="Button-Edit"
+                    onclick="document.querySelector('.Table-Struk-Tarik').style.display='none'">Tutup</button>
+            </div>
+        </div>
+        
     </div>
     <script src="../../Back/JS/Riwayat.js"></script>
 </body>

@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    const btnKirimWATarik = document.getElementById("btn-kirim-wa-tarik");
+    if (btnKirimWATarik) {
+        btnKirimWATarik.addEventListener("click", kirimStrukWATarik);
+    }
+
+
     const nasabah = JSON.parse(localStorage.getItem("selectedNasabah"));
 
     if (!nasabah) {
@@ -42,15 +49,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 `;
 
                     const td = document.createElement("td");
-                    const btnCetak = document.createElement("button");
-                    btnCetak.textContent = "Cetak";
-                    btnCetak.className = "btn-Cetak";
-                    btnCetak.addEventListener("click", () => {
-                        showStruk(item);
+                    const btnCetakTarik = document.createElement("button");
+                    btnCetakTarik.textContent = "Cetak";
+                    btnCetakTarik.className = "btn-Cetak-Tarik";
+                    btnCetakTarik.addEventListener("click", () => {
+                        showStrukTarik(item);
                         currentNomorWA = item.nomorWA || ""; // simpan sementara dengan fallback
                     });
 
-                    td.appendChild(btnCetak);
+                    td.appendChild(btnCetakTarik);
                     row.appendChild(td);
                     tbody.appendChild(row);
                 });
@@ -61,10 +68,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Event listener untuk tombol cetak struk (yang sudah ada di HTML)
-    const btnCetak = document.querySelector(".Button-Cetak");
-    if (btnCetak) {
-        btnCetak.addEventListener("click", function () {
-            const strukDiv = document.querySelector(".Struk-Content");
+    const btnCetakTarik = document.querySelector(".Button-Cetak-Tarik");
+    if (btnCetakTarik) {
+        btnCetakTarik.addEventListener("click", function () {
+            const strukDiv = document.querySelector(".Struk-Content-Tarik");
 
             const printWindow = window.open("", "_blank", "width=400,height=600");
             printWindow.document.write(`
@@ -139,6 +146,41 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    function showStrukTarik(data) {
+    console.log("Menampilkan struk untuk:", data);
+
+    if (!data) {
+        console.error("Data struk tidak valid!");
+        return;
+    }
+
+    const strukTableTarik = document.querySelector(".Table-Struk-Tarik");
+    if (!strukTableTarik) {
+        alert("Komponen struk tidak ditemukan! Periksa HTML Anda.");
+        return;
+    }
+
+    strukTableTarik.style.display = "flex";
+
+    const elementsToFill = [
+        { id: "nama-Struk-tarik", value: data.nama || "Tidak tersedia" },
+        { id: "total-tarik-saldo", value: `Rp ${parseInt(data.penarikan).toLocaleString()}` },
+        { id: "tanggal-Struk-tarik", value: data.tanggal || "Tidak tersedia" }
+    ];
+
+    elementsToFill.forEach(item => {
+        const element = document.getElementById(item.id);
+        if (element) {
+            element.innerText = item.value;
+        }
+    });
+
+    // ✅ Simpan nomor WA nasabah
+    currentNomorWA = data.nomorWA || "";
+}
+
+
+
     function kirimStrukWA() {
         // Ambil data dari elemen yang sudah diisi
         const namaEl = document.getElementById("nama-Struk");
@@ -200,6 +242,60 @@ Terima kasih telah berpartisipasi menjaga lingkungan`;
                 console.error(err);
             });
     }
+
+    function kirimStrukWATarik() {
+        // Ambil data dari elemen yang sudah diisi
+        const namaElTarik = document.getElementById("nama-Struk-tarik");
+        const totalElTarik = document.getElementById("total-tarik-saldo");
+        const tanggalElTarik = document.getElementById("tanggal-Struk-tarik");
+
+        if (!namaElTarik || !totalElTarik || !tanggalElTarik) {
+            console.error("Beberapa elemen struk tidak ditemukan!");
+            return;
+        }
+
+        const namatarik = namaElTarik.innerText.replace("Nama: ", "").trim();
+        const totaltarik = totalElTarik.innerText.replace("Rp ", "").trim();
+        const tanggaltarik = tanggalElTarik.innerText.replace("Tanggal: ", "").trim();
+
+        const strukTexttarik =
+            `*Struk Penarikan Bank Sampah Desa*
+==============================
+*Nama:* ${namatarik}
+*Tanggal:* ${tanggaltarik}
+*Jumlah Penarikan:* Rp ${totaltarik}
+==============================
+Terima kasih telah berpartisipasi menjaga lingkungan 🌱`;
+
+        // Jika nomor WA sudah ada
+        if (currentNomorWA && currentNomorWA.trim() !== "") {
+            const urlWA = `https://wa.me/${currentNomorWA}?text=${encodeURIComponent(strukTexttarik)}`;
+            window.open(urlWA, '_blank');
+            return;
+        }
+
+        // Jika belum ada, minta input & simpan ke database
+        const inputWA = prompt("Nomor WhatsApp belum tersedia. Masukkan nomor (cth: 6281234567890):");
+        if (!inputWA) return;
+
+        // Simpan ke database
+        fetch("../../Back/php/update_nomor_wa.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nama: namatarik, nomorWA: inputWA })
+        })
+            .then(res => res.text())
+            .then(msg => {
+                alert(msg);
+                const urlWA = `https://wa.me/${inputWA}?text=${encodeURIComponent(strukTexttarik)}`;
+                window.open(urlWA, '_blank');
+            })
+            .catch(err => {
+                alert("Gagal menyimpan nomor WA!");
+                console.error(err);
+            });
+    }
+
 
     // Fungsi tampilkan tabel Riwayat Setor
     document.getElementById("btn-setor").addEventListener("click", function () {

@@ -1,0 +1,58 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f7f7;
+    color: #144B3A;
+    padding: 20px;
+}
+
+.container {
+    max-width: 500px;
+    background-color: white;
+    border: 1px solid #ccc;
+    margin: auto;
+    padding: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.desa h2 {
+    font-size: 22px;
+    margin: 0;
+    text-align: right;
+}
+
+.info-struk {
+    border-top: 2px solid #144B3A;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.date-struk {
+    text-align: right;
+}
+
+.data-nasabah,
+.jenis-sampah,
+.perhitungan,
+.pembayaran {
+    margin-top: 20px;
+}
+
+h3 {
+    border-bottom: 1px solid #144B3A;
+    padding-bottom: 5px;
+}
+
+h4 {
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
