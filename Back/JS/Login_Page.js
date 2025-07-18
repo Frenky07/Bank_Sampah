@@ -11,11 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!username || !password) {
             alert('Harap isi username dan password.');
-            return; // ⛔ STOP di sini kalau kosong!
+            return;
         }
 
         try {
-            const response = await fetch('../../Back/PHP/Login_Page.php', {
+            console.log('Mencoba fetch ke:', '../../Back/php/Login_Page.php');
+            
+            const response = await fetch('../../Back/php/Login_Page.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -23,7 +25,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: `nama=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
             });
 
-            const result = await response.json();
+            console.log('Response status:', response.status);
+            console.log('Response headers:', response.headers);
+
+            // Cek apakah response berhasil
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // Ambil response sebagai text dulu untuk debugging
+            const responseText = await response.text();
+            console.log('Raw response:', responseText);
+
+            // Cek apakah response kosong
+            if (!responseText.trim()) {
+                throw new Error('Response kosong dari server');
+            }
+
+            // Coba parse JSON
+            let result;
+            try {
+                result = JSON.parse(responseText);
+            } catch (jsonError) {
+                console.error('JSON parse error:', jsonError);
+                console.error('Response yang tidak bisa di-parse:', responseText);
+                throw new Error('Server mengembalikan response yang bukan JSON: ' + responseText.substring(0, 100));
+            }
+
+            console.log('Parsed result:', result);
 
             if (result.status === 'success') {
                 document.body.classList.remove('fade-in');
@@ -32,11 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = 'DashBoard.html';
                 }, 500);
             } else {
-                alert(result.message);
+                alert(result.message || 'Login gagal');
             }
         } catch (error) {
-            alert('Terjadi kesalahan saat login.');
-            console.error(error);
+            console.error('Error detail:', error);
+            alert('Terjadi kesalahan saat login: ' + error.message);
         }
     });
 });
