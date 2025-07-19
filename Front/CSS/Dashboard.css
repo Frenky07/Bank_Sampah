@@ -203,6 +203,14 @@ thead th:nth-child(odd) {
     background-color: #fff;
 }
 
+tbody td :nth-child(even){
+    background-color: #f4f1e8;
+}
+
+tbody td :nth-child(odd){
+    background-color: #fff;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

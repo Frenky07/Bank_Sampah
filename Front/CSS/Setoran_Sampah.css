@@ -187,6 +187,11 @@ select {
     font-size: 16px;
 }
 
+.Button-Container {
+    display: flex;
+    justify-content: content;
+}
+
 .Button-Submit {
     padding: 10px 20px;
     background-color: #4e54c8;
