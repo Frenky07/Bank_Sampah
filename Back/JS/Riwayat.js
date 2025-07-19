@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const tbody = document.getElementById("tabunganNasabah");
             tbody.innerHTML = "";
             data.forEach(nasabah => {
-                // buat baris HTML
             });
         });
 
