@@ -1,3 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.Img-Login {
+    width: 100%;
+    filter: brightness(40%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
 body {
     font-family: "Poppins", sans-serif;
     font-weight: 100;
@@ -98,4 +114,9 @@ input {
 
 .Login_Button:hover {
     background-color: #4caf50;
+}
+
+.Login_Page {
+    position: relative;
+    z-index: 1;
 }
