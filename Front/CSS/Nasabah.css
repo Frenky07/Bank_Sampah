@@ -16,6 +16,60 @@ main {
     padding: 20px;
 }
 
+/* ========================= */
+
+.Judul-Table {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.Judul-Table h2{
+    text-align: center;
+}
+
+.Judul-Table hr {
+    size: 100px;
+    border: 1px solid #fff;
+}
+
+.Top-Table {
+    background-color: #1D7171;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.Filter-Container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.Filter-Item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.Filter-Item input {
+    color: white;
+    font-weight: 500;
+}
+
+.Filter-Item select {
+    width: 200px;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50vh;
+}
+
 /* ====================== Navbar ===================== */
 
 .navbar {
@@ -25,7 +79,6 @@ main {
     align-items: center;
     position: sticky;
     top: 0;
-    /* background-color: #9DC139; */
     z-index: 1000;
 
     background: rgba(157, 193, 57, 0.32);
@@ -217,16 +270,6 @@ select {
     border-radius: 5px;
     font-size: 16px;
 }
-
-#searchNama {
-    width: 35%;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
 
 /* ==================== Table Tarik ========================== */
 

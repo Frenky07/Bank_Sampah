@@ -1,4 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
+    fetch("../../Back/php/get_all_nasabah.php")
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.getElementById("tabunganNasabah");
+            tbody.innerHTML = "";
+            data.forEach(nasabah => {
+                // buat baris HTML
+            });
+        });
 
     const btnKirimWATarik = document.getElementById("btn-kirim-wa-tarik");
     if (btnKirimWATarik) {
@@ -18,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("jumlah-tabungan").textContent = "Jumlah Tabungan: Rp " + parseInt(nasabah.total_tabungan).toLocaleString();
 
     document.getElementById("btn-kembali").addEventListener("click", function () {
-        window.location.href = "nasabah.html";
+        localStorage.removeItem("selectedNasabah"); 
+        window.location.href = "Nasabah.html";
     });
 
     document.getElementById("btn-Riwayat").addEventListener("click", function () {

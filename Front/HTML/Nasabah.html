@@ -24,27 +24,36 @@
     </nav>
 
     <main>
-        <div style="margin-bottom: 15px; padding: 0 1rem;">
-            <select id="filterSaldo">
-                <option value="ada_saldo" class="select-saldo">Hanya yang punya saldo</option>
-                <option value="semua" class="select-saldo">Semua Nasabah</option>
-            </select>
-
-            <input type="text" id="searchNama" placeholder="Cari nama nasabah...">
-        </div>
-
         <div class="Table-Nasabah-Container">
             <table class="Table-Nasabah">
-                <thead>
-                    <tr>
-                        <th scope="col">Nasabah</th>
-                        <th scope="col">Total Tabungan</th>
-                        <th scope="col">Nomor WA </th>
-                        <th scope="col">Tindakan</th>
-                    </tr>
-                </thead>
-                <tbody id="tabunganNasabah">
-                </tbody>
+                <div class="Top-Table">
+                    <div class="Judul-Table">
+                        <h2>Daftar Nasabah</h2>
+                        <hr>
+                    </div>
+                    <div class="Filter">
+                        <div class="Filter-Container">
+                            <div class="Filter-Item">
+                                <input type="text" id="searchNama" placeholder="Cari nama nasabah...">
+                            </div>
+                            <div class="Filter-Item">
+                                <select id="filterSaldo">
+                                    <option value="ada_saldo" class="select-saldo">Hanya yang punya saldo</option>
+                                    <option value="semua" class="select-saldo">Semua Nasabah</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <thead>
+                        <tr>
+                            <th scope="col">Nasabah</th>
+                            <th scope="col">Total Tabungan</th>
+                            <th scope="col">Nomor WA </th>
+                            <th scope="col">Tindakan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabunganNasabah"></tbody>
+                </div>
             </table>
         </div>
 
