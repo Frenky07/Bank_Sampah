@@ -148,6 +148,60 @@ thead th {
     margin-top: 20px;
 }
 
+/* ================ Judul =================== */
+
+.Judul-Table {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.Judul-Table h2{
+    text-align: center;
+}
+
+.Judul-Table hr {
+    size: 100px;
+    border: 1px solid #fff;
+}
+
+.Top-Table {
+    background-color: #1D7171;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.Filter-Container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.Filter-Item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.Filter-Item label {
+    color: white;
+    font-weight: 500;
+}
+
+.Filter-Item select {
+    width: 200px;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
 /* ========== CSS EDIT TABLE ================ */
 
 .Table-Edit {
@@ -184,7 +238,7 @@ input {
 }
 
 select {
-    width: 100%;
+    width: 50%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
