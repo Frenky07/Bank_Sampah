@@ -61,7 +61,7 @@ body.fade-out {
 
 .Navbar-Item {
     border: solid;
-    color: white;
+    color: oldlace;
     text-decoration: none;
     font-weight: 500;
     padding: 5px 15px;
@@ -183,8 +183,8 @@ select {
 
 .Judul-Keterangan h3{
     text-align: center;
-    font-weight: 100;
-    background-color: #ccc;
+    font-weight: 700;
+    background-color: #fff;
     padding: 10px;
     border-radius: 1.5vh;
     width: 50vh;
@@ -224,11 +224,11 @@ thead th:nth-child(odd) {
     background-color: #fff;
 }
 
-tbody td :nth-child(even){
+tbody tr:nth-child(even) td {
     background-color: #f4f1e8;
 }
 
-tbody td :nth-child(odd){
+tbody tr:nth-child(odd) td {
     background-color: #fff;
 }
 
@@ -273,9 +273,3 @@ tbody td :nth-child(odd){
 }
 
 /* ================================= */
-
-img {
-    width: 50px;
-    height: 50px;
-    object-position: left top;
-}

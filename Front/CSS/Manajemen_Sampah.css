@@ -199,6 +199,7 @@ thead th {
     font-size: 14px;
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50vh;
 }
 
 
@@ -248,7 +249,7 @@ select {
 
 .Button-Edit {
     padding: 10px 20px;
-    background-color: #4e54c8;
+    background-color: #1D7171;
     color: white;
     border: none;
     border-radius: 5px;
@@ -288,7 +289,7 @@ select {
 
 .Button-Cetak {
     padding: 10px 20px;
-    background-color: #4e54c8;
+    background-color: #1D7171;
     color: white;
     border: none;
     border-radius: 5px;
@@ -302,7 +303,7 @@ select {
 
 .btn-Edit {
     padding: 10px 20px;
-    background-color: #4e54c8;
+    background-color: #1D7171;
     color: white;
     border: none;
     border-radius: 5px;
@@ -317,7 +318,7 @@ select {
 
 .btn-Cetak {
     padding: 10px 20px;
-    background-color: #4e54c8;
+    background-color: #1D7171;
     color: white;
     border: none;
     border-radius: 5px;
