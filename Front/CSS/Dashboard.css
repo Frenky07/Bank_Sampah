@@ -34,13 +34,13 @@ body.fade-out {
     align-items: center;
     position: sticky;
     top: 0;
+    /* background-color: #9DC139; */
     z-index: 1000;
     background: rgba(157, 193, 57, 0.32);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2.4px);
     -webkit-backdrop-filter: blur(2.4px);
     border: 1px solid rgba(157, 193, 57, 0.3);
-    /* background-color: #9DC139; */
 }
 
 .navbar-hidden {
@@ -127,23 +127,53 @@ body.fade-out {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-.Section-Content :nth-child(even) {
+/* ==================== Section Bagian Chart ========================= */
+
+.section-chart {
     padding: 10vh;
     background-color: #fff;
     border-radius: 7vh;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.Section-Content :nth-child(odd) {
-    padding: 10vh;
-    background-color: #1D7171;
-    border-radius: 7vh;
+.section-chart h4{
+    text-align: center;
+    font-size: 2vw;
 }
 
-h4 {
-    color: #fff;
+.section-chart select{
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
+select {
+    height: auto;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.custom-select {
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+#pieChart {
+    max-width: 500px;
+    max-height: 500px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+/* ============================== Section Bagian Keterangan ====================*/
 
 @keyframes fadeIn {
     from {
@@ -186,14 +216,3 @@ h4 {
 }
 
 /* ================================= */
-
-select {
-    height: 25vh;
-    font-size: 27px;
-    /* width: 50vh; */
-    /* size: 1vh; */
-}
-
-/* img {
-    width: 70%;
-} */

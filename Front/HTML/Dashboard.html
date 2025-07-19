@@ -25,18 +25,16 @@
 
     <main>
         <div class="Section-Content">
-            <section class="section" id="Section-1">
-                <div>
+            <section class="section-chart" id="Section-1">
+                <div class="Judul">
                     <h4>Distribusi Sampah</h4>
                     <select class="custom-select">
                         <option>Pilih Tahun</option>
                     </select>
                 </div>
-                <canvas id="pieChart" width="400" height="400"></canvas>
+                <canvas id="pieChart" width="50" height="50"></canvas>
             </section>
-            <section class="section" id="Section-2">
-                <!-- <img src="../../Images/20250712_205144.jpg"> -->
-                <!-- <img src="../../Images/20250712_122757.jpg"> -->
+            <section class="section-keterangan" id="Section-2">
             </section>
             <section class="section" id="Section-3"></section>
         </div>
@@ -51,7 +49,6 @@
                 const labels = data.map(item => item.jenis);
                 const values = data.map(item => item.berat);
                 Chart.defaults.font.size = 25;
-
 
                 const ctx = document.getElementById('pieChart').getContext('2d');
                 new Chart(ctx, {
