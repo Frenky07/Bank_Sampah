@@ -28,102 +28,130 @@
     </nav>
 
     <main>
-        <table class="Table-Sampah">
-            <div class="Top-Table">
-                <div class="Judul-Table">
-                    <h2>Kelola Setoran Sampah</h2>
-                    <hr>
-                </div>
-                <div class="Filter">
-                    <div class="Filter-Container">
-                        <div class="Filter-Item">
-                            <label for="id_jenis">Filter Jenis</label>
-                            <select id="id_jenis" name="id_jenis">
-                                <option value="">Jenis</option>
-                            </select>
-                        </div>
+        <div class="Top-Table">
+            <div class="Judul-Table">
+                <h2>Kelola Setoran Sampah</h2>
+                <hr>
+            </div>
 
-                        <div class="Filter-Item">
-                            <label for="id_status">Filter Bulan</label>
-                            <select id="filter_bulan">
-                                <option value="">Pilih Bulan</option>
-                                <option value="01">Januari</option>
-                                <option value="02">Februari</option>
-                                <option value="03">Maret</option>
-                                <option value="04">April</option>
-                                <option value="05">Mei</option>
-                                <option value="06">Juni</option>
-                                <option value="07">Juli</option>
-                                <option value="08">Agustus</option>
-                                <option value="09">September</option>
-                                <option value="10">Oktober</option>
-                                <option value="11">November</option>
-                                <option value="12">Desember</option>
-                            </select>
-                        </div>
+            <div class="Filter">
+                <div class="Filter-Container">
+                    <div class="Filter-Item">
+                        <label for="id_jenis">Filter Jenis</label>
+                        <select id="id_jenis" name="id_jenis">
+                            <option value="">Jenis</option>
+                        </select>
+                    </div>
 
-                        <div class="Filter-Item">
-                            <label for="filter_tahun">Filter Tahun</label>
-                            <select id="filter_tahun">
-                                <option value="">Tahun</option>
-                            </select>
-                        </div>
+                    <div class="Filter-Item">
+                        <label for="filter_tahun">Filter Tahun</label>
+                        <select id="filter_tahun">
+                            <option value="">Tahun</option>
+                        </select>
+                    </div>
+
+                    <div class="Filter-Item">
+                        <label for="filter_bulan">Filter Bulan</label>
+                        <select id="filter_bulan">
+                            <option value="">Bulan</option>
+                            <option value="01">Januari</option>
+                            <option value="02">Februari</option>
+                            <option value="03">Maret</option>
+                            <option value="04">April</option>
+                            <option value="05">Mei</option>
+                            <option value="06">Juni</option>
+                            <option value="07">Juli</option>
+                            <option value="08">Agustus</option>
+                            <option value="09">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                        </select>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="Table-Container">
+            <div class="Container-Teks">
+                <h3>Tabel Setoran Sampah</h3>
+            </div>
+            <table class="Table-Sampah">
                 <thead>
                     <tr>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Jenis Sampah</th>
-                        <th scope="col">Berat (kg)</th>
-                        <th scope="col">Total Harga</th>
-                        <th scope="col">Tindakan</th>
+                        <th>Nama</th>
+                        <th>Tanggal</th>
+                        <th>Jenis Sampah</th>
+                        <th>Berat (kg)</th>
+                        <th>Total Harga</th>
+                        <th>Tindakan</th>
                     </tr>
                 </thead>
                 <tbody id="dataSampah"></tbody>
-            </div>
+            </table>
 
-            <div class="Table-Edit">
-                <div class="Table-Edit-Content">
-                    <h3>Edit Data Sampah</h3>
-                    <input type="text" class="Form-Edit" id="editnama" placeholder="Nama" disabled>
-                    <input type="date" class="Form-Edit" id="editTanggal">
-                    <select class="Form-Edit" id="editJenisSampah">
-                        <option value="">Pilih Jenis Sampah</option>
-                        <option value="Plastic">Plastic</option>
-                        <option value="Kertas">Kertas</option>
-                        <option value="Logam">Logam</option>
-                        <option value="Kaca">Kaca</option>
+            <div class="Table-Action">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; width: 100%;">
+                    <select class="select-row-limit" id="rowLimit">
+                        <option value="10">10 Baris</option>
+                        <option value="25">25 Baris</option>
+                        <option value="50">50 Baris</option>
                     </select>
-                    <label id="labelHargaPerKg" style="margin: 5px 0; font-weight: bold; color: green;"></label>
-                    <input type="number" class="Form-Edit" id="editBerat" placeholder="Berat (kg)" min="0" step="1">
-                    <input type="number" class="Form-Harga" id="editHarga" placeholder="Harga RP" readonly>
-                    <button class="Button-Edit" onclick="editData()">Simpan</button>
-                    <button class="Button-Edit" onclick="Close()">Batal</button>
-                </div>
-            </div>
-
-            <div class="Table-Struk">
-                <div class="Table-Struk-Content">
-                    <div class="Struk-Content">
-                        <h2 class="Table-Struk-in">Bank sampah</h2>
-                        <p class="Table-Struk-in">=======================================</p>
-                        <p class="Table-Struk-in">Nama: <span id="nama"></span></p>
-                        <p class="Table-Struk-in">Jenis Sampah: <span id="jenis"></span></p>
-                        <p class="Table-Struk-in">Berat: <span id="berat"></span> kg</p>
-                        <p class="Table-Struk-in">Harga/kg: Rp <span id="harga"></span></p>
-                        <p class="Table-Struk-in">=======================================</p>
-                        <p class="Table-Struk-in"><strong>Total: Rp <span id="total"></span></strong></p>
-                        <p class="Table-Struk-in">=======================================</p>
-                        <p class="Table-Struk-in">Tanggal: <span id="tanggal"></span></p>
+    
+                    <div style="display: flex; gap: 20px; align-items: center;">
+                        <span>«</span>
+                        <span
+                            style="color: white; background-color: #1D7171; padding: 6px 10px; border-radius: 6px;">1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>»</span>
                     </div>
-                    <button type="submit" class="Button-Cetak">Cetak</button>
-                    <button class="Button-Edit" onclick="kirimStrukWA()">Kirim via WhatsApp</button>
-                    <button class="Button-Edit"
-                        onclick="document.querySelector('.Table-Struk').style.display='none'">Tutup</button>
                 </div>
             </div>
-        </table>
+        </div>
+
+        <div class="Table-Edit">
+            <div class="Table-Edit-Content">
+                <h3>Edit Data Sampah</h3>
+                <input type="text" class="Form-Edit" id="editnama" placeholder="Nama" disabled>
+                <input type="date" class="Form-Edit" id="editTanggal">
+                <select class="Form-Edit" id="editJenisSampah">
+                    <option value="">Pilih Jenis Sampah</option>
+                    <option value="Plastic">Plastic</option>
+                    <option value="Kertas">Kertas</option>
+                    <option value="Logam">Logam</option>
+                    <option value="Kaca">Kaca</option>
+                </select>
+                <label id="labelHargaPerKg" style="margin: 5px 0; font-weight: bold; color: green;"></label>
+                <input type="number" class="Form-Edit" id="editBerat" placeholder="Berat (kg)" min="0" step="1">
+                <input type="number" class="Form-Harga" id="editHarga" placeholder="Harga RP" readonly>
+                <button class="Button-Edit" onclick="editData()">Simpan</button>
+                <button class="Button-Edit" onclick="Close()">Batal</button>
+            </div>
+        </div>
+
+        <div class="Table-Struk">
+            <div class="Table-Struk-Content">
+                <div class="Struk-Content">
+                    <h2 class="Table-Struk-in">Bank sampah</h2>
+                    <p class="Table-Struk-in">=======================================</p>
+                    <p class="Table-Struk-in">Nama: <span id="nama"></span></p>
+                    <p class="Table-Struk-in">Jenis Sampah: <span id="jenis"></span></p>
+                    <p class="Table-Struk-in">Berat: <span id="berat"></span> kg</p>
+                    <p class="Table-Struk-in">Harga/kg: Rp <span id="harga"></span></p>
+                    <p class="Table-Struk-in">=======================================</p>
+                    <p class="Table-Struk-in"><strong>Total: Rp <span id="total"></span></strong></p>
+                    <p class="Table-Struk-in">=======================================</p>
+                    <p class="Table-Struk-in">Tanggal: <span id="tanggal"></span></p>
+                </div>
+                <button type="submit" class="Button-Cetak">Cetak</button>
+                <button class="Button-Edit" onclick="kirimStrukWA()">Kirim via WhatsApp</button>
+                <button class="Button-Edit"
+                    onclick="document.querySelector('.Table-Struk').style.display='none'">Tutup</button>
+            </div>
+        </div>
     </main>
 
     <script src="../../Back/JS/Manajemen_sampah.js"></script>

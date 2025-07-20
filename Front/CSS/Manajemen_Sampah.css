@@ -95,9 +95,9 @@ main {
 table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid rgb(140 140 140);
+    /* border: 1px solid rgb(140 140 140); */
     margin-top: 20px;
-    border-color: #1D7171;
+    /* border-color: #1D7171; */
     border-width: 4px;
 }
 
@@ -116,11 +116,12 @@ table {
 th,
 td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
     background: #dbdbdb;
-    border: 1px solid #1D7171;
+    /* border: 1px solid #1D7171; */
 }
+
 
 thead th:nth-child(even) {
     background-color: #f4f1e8;
@@ -130,15 +131,16 @@ thead th:nth-child(odd) {
     background-color: #fff;
 }
 
-tbody td:nth-child(odd){
+tbody td:nth-child(odd) {
     background-color: #fff;
 }
 
-tbody td:nth-child(even){
+tbody td:nth-child(even) {
     background-color: #f4f1e8;
 }
 
 thead th {
+    text-align: center;
     background-color: #ecf0f1;
     color: #2c3e50;
 }
@@ -154,7 +156,7 @@ thead th {
     margin-bottom: 20px;
 }
 
-.Judul-Table h2{
+.Judul-Table h2 {
     text-align: center;
 }
 
@@ -200,6 +202,18 @@ thead th {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 50vh;
 }
+
+.select-row-limit {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: #155d5d;
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
 
 
 /* ========== CSS EDIT TABLE ================ */
@@ -300,33 +314,62 @@ select {
     background-color: #6c61be;
 }
 
-.btn-Edit {
-    padding: 10px 20px;
+.btn-Edit,
+.btn-Cetak {
+    padding: 6px 14px;
     background-color: #1D7171;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
+    margin-right: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
-}
-
-.btn-Edit:hover {
-    background-color: #6c61be;
 }
 
 .btn-Cetak {
-    padding: 10px 20px;
-    background-color: #1D7171;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background-color: #009688;
 }
 
+.btn-Edit:hover,
 .btn-Cetak:hover {
-    background-color: #6c61be;
+    background-color: #155d5d;
+}
+
+/* Baru */
+
+.Table-Container {
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.Container-Teks {
+    margin-top: 20px;
+    background-color: #1D7171;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    border-radius: 10px;
+}
+
+.Container-Teks h3 {
+    color: white;
+}
+
+.Table-Action {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: space-between;
 }
 
 /* ================== NAVBAR ============ */
