@@ -38,7 +38,6 @@ if ($resultHarga && $resultHarga->num_rows > 0) {
         } else {
             echo "Gagal update saldo nasabah: " . $conn->error;
         }
-
     } else {
         echo "Gagal menyimpan data: " . $conn->error;
     }
@@ -47,4 +46,3 @@ if ($resultHarga && $resultHarga->num_rows > 0) {
 }
 
 $conn->close();
-?>
