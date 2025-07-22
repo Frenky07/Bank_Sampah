@@ -1,12 +1,26 @@
 let currentEditId = null;
-let currentNasabah = null; // untuk menyimpan data nasabah saat tarik
+let currentNasabah = null;
+
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".Navbar-Item");
+    navLinks.forEach(link => {
+        const href = link.getAttribute("href");
+        if (href === currentPage) {
+            link.classList.add("active-nav");
+        }
+        else if (window.location.href.includes(href)) {
+            link.classList.add("active-nav");
+        }
+    });
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     const tbody = document.getElementById("tabunganNasabah");
     const saldoFilter = document.getElementById("filterSaldo");
     const searchInput = document.getElementById("searchNama");
     const tarikPopup = document.querySelector(".Table-Tarik");
-    const nomorPopup = document.querySelector("Table-Nomor");
+    const nomorPopup = document.querySelector(".Table-Nomor");
     const btnNomor = document.getElementById("btnEditNomor");
     const btnTarik = document.getElementById("btnTarikSaldo");
     const btnBatal = document.querySelector(".Table-Tarik .Button-Edit:nth-of-type(2)");
@@ -29,9 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 tbody.innerHTML = "";
 
-                if (data.length === 0) {
+                if (!Array.isArray(data) || data.length === 0) {
                     const tr = document.createElement("tr");
-                    tr.innerHTML = `<td colspan="3" style="text-align:center;">Tidak ada data ditemukan</td>`;
+                    tr.innerHTML = `<td colspan="4" style="text-align:center;">Tidak ada data ditemukan</td>`; // colspan 4 sesuai jumlah kolom
                     tbody.appendChild(tr);
                     return;
                 }
@@ -41,13 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     tr.innerHTML = `
                         <td>${item.nama}</td>
                         <td>Rp ${parseInt(item.total_tabungan).toLocaleString()}</td>
-                        <td>${item.nomorWA}</td>
+                        <td>${item.nomorWA || "-"}</td>
                     `;
                     const td = document.createElement("td");
 
                     const btnNomor = document.createElement("button");
                     btnNomor.textContent = "Edit Nomor";
-                    btnNomor.className = "btn-Edit"
+                    btnNomor.className = "btn-Edit";
                     btnNomor.addEventListener("click", () => showNomor(item));
 
                     const btnEdit = document.createElement("button");
@@ -77,37 +91,28 @@ document.addEventListener("DOMContentLoaded", function () {
         const strukTarik = document.querySelector(".Table-Struk-Tarik");
         if (!strukTarik) return;
 
-        document.getElementById("nama-Struk-Tarik").innerText = data.nama || nasabah.nama;
-        document.getElementById("total-Struk-Tarik").innerText = parseInt(data.penarikan).toLocaleString();
-        document.getElementById("tanggal-Struk-Tarik").innerText = data.tanggal;
+        document.getElementById("nama-Struk-Tarik").innerText = data.nama || (currentNasabah && currentNasabah.nama) || "";
+        document.getElementById("total-Struk-Tarik").innerText = parseInt(data.penarikan || 0).toLocaleString();
+        document.getElementById("tanggal-Struk-Tarik").innerText = data.tanggal || "";
 
         strukTarik.style.display = "flex";
     }
 
-
     function showEditForm(item) {
-        // ke html riwayat
+        localStorage.setItem("selectedNasabah", JSON.stringify(item));
+        window.location.href = "riwayat.html";
     }
 
     function showNomor(item) {
-        document.querySelector(".Table-Nomor").style.display = "flex";
+        nomorPopup.style.display = "flex";
         document.getElementById("editnama_nomor").value = item.nama;
-        document.getElementById("tampilnomor").value = item.nomorWA;
+        document.getElementById("tampilnomor").value = item.nomorWA || "";
         document.getElementById("editNomor").value = "";
         currentNasabah = item;
     }
 
-    function showEditForm(item) {
-        // Simpan data nasabah ke localStorage
-        localStorage.setItem("selectedNasabah", JSON.stringify(item));
-
-        // Pindah ke halaman riwayat.html
-        window.location.href = "riwayat.html";
-    }
-
-
     function close_nomor() {
-        document.querySelector(".Table-Nomor").style.display = "none";
+        nomorPopup.style.display = "none";
     }
 
     function showStruk(nasabah) {
@@ -123,19 +128,23 @@ document.addEventListener("DOMContentLoaded", function () {
         tarikPopup.style.display = "none";
     }
 
-    // ✅ Pastikan tombol dengan ID btnTarikSaldo sudah ada di HTML
     if (btnNomor) {
         btnNomor.addEventListener("click", function () {
-            const nomor = document.getElementById("editNomor").value;
-            const nomorBaru = parseInt(document.getElementById("editNomor").value);
+            const nomor = document.getElementById("editNomor").value.trim();
+            const nomorBaru = parseInt(nomor, 10);
 
             if (!nomor) {
-                alert("Nomor belum dipilih.");
+                alert("Nomor belum diisi.");
                 return;
             }
 
             if (isNaN(nomorBaru) || nomorBaru <= 0) {
                 alert("Masukkan nomor yang valid.");
+                return;
+            }
+
+            if (!currentNasabah) {
+                alert("Nasabah tidak valid.");
                 return;
             }
 
@@ -150,8 +159,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(res => res.text())
                 .then(response => {
                     alert(response);
-                    closePopup();
-                    loadData(); // ✅ Hanya reload data, tidak reload seluruh halaman
+                    close_nomor();
+                    loadData();
                 })
                 .catch(error => {
                     console.error("Gagal edit:", error);
@@ -160,11 +169,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Pastikan tombol dengan ID btnTarikSaldo sudah ada di HTML
     if (btnTarik) {
         btnTarik.addEventListener("click", function () {
             const tanggal = document.getElementById("editTanggal").value;
-            const jumlahTarik = parseInt(document.getElementById("editSaldo").value);
+            const jumlahTarik = parseInt(document.getElementById("editSaldo").value, 10);
 
             if (!tanggal) {
                 alert("Tanggal belum dipilih.");
@@ -195,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(response => {
                     alert(response);
                     closePopup();
-                    loadData(); // ✅ Hanya reload data, tidak reload seluruh halaman
+                    loadData();
                 })
                 .catch(error => {
                     console.error("Gagal tarik:", error);
@@ -204,17 +212,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Tombol batal di form tarik
     if (btnBatal) {
         btnBatal.addEventListener("click", closePopup);
     }
 
     if (btnBatal1) {
-        btnBatal1.addEventListener("click", close_nomor)
+        btnBatal1.addEventListener("click", close_nomor);
     }
 
     saldoFilter.addEventListener("change", loadData);
     searchInput.addEventListener("input", loadData);
 
-    loadData(); // saat halaman pertama kali dimuat
+    loadData();
 });
