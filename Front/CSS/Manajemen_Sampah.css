@@ -372,6 +372,32 @@ select {
     align-items: space-between;
 }
 
+.pagination {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.pagination button {
+    background-color: #1D7171;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #155d5d;
+    font-weight: bold;
+}
+
+.pagination button:disabled {
+    background-color: #aaa;
+    cursor: default;
+}
+
 /* ================== NAVBAR ============ */
 
 @media (max-width: 1024px) {

@@ -24,6 +24,37 @@ body.fade-out {
     transform: scale(0.95);
 }
 
+/* =========================================== */
+
+.Judul-Table {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.Judul-Table h2{
+    text-align: center;
+}
+
+.Judul-Table hr {
+    size: 100px;
+    border: 1px solid #fff;
+}
+
+.Top-Table {
+    background-color: #1D7171;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.Filter-Container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
 /* =============================== NAVBAR =================================== */
 
 .navbar {

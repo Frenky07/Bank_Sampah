@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Struk Setoran</title>
+    <title>Tabel Jenis Sampah</title>
     <link rel="stylesheet" href="../CSS/Market.css">
     <script src="../../Back/JS/Active_Button.js"></script>
 </head>
@@ -22,32 +22,36 @@
     </nav>
 
     <main>
-        <div>
-            <h2>Daftar Harga Sampah</h2>
+        <div class="Table-Market-Container">
             <table class="Table-Market">
-                <thead>
-                    <tr>
-                        <th>Jenis sampah</th>
-                        <th>Deskripsi</th>
-                        <th>Harga/KG</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody id="datamarket">
-                <tbody id="datamarket">
-                </tbody>
-                </tbody>
-            </table>
-
-            <div class="Table-edit-harga">
-                <div class="Table-edit-harga-Content">
-                    <input type="text" class="Form-Edit" id="editnama" disabled>
-                    <input type="text" class="Form-Edit" id="editdeskripsi" placeholder="Deskripsi">
-                    <input type="number" class="Form-Edit" id="editHarga" placeholder="Harga RP">
-                    <button class="Button-Edit" onclick="editData()">Simpan</button>
-                    <button class="Button-Edit" onclick="Close()">Batal</button>
+                <div class="Top-Table">
+                    <div class="Judul-Table">
+                        <h2>Daftar Harga Sampah</h2>
+                        <hr>
+                    </div>
+                    <thead>
+                        <tr>
+                            <th>Jenis sampah</th>
+                            <th>Deskripsi</th>
+                            <th>Harga/KG</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="datamarket">
+                    </tbody>
                 </div>
+            </table>
+        </div>
+
+        <div class="Table-edit-harga">
+            <div class="Table-edit-harga-Content">
+                <input type="text" class="Form-Edit" id="editnama" disabled>
+                <input type="text" class="Form-Edit" id="editdeskripsi" placeholder="Deskripsi">
+                <input type="number" class="Form-Edit" id="editHarga" placeholder="Harga RP">
+                <button class="Button-Edit" onclick="editData()">Simpan</button>
+                <button class="Button-Edit" onclick="Close()">Batal</button>
             </div>
+        </div>
         </div>
     </main>
     <script src="../../Back/JS/Market.js"></script>
