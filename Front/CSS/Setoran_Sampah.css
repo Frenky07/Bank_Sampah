@@ -200,7 +200,7 @@ select {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .Add-KK {
@@ -214,11 +214,22 @@ select {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.Button-Add a {
+    color: white;
+    text-decoration: none;
+}
+
+.Button-Add:hover {
+    background-color: #6c61be;
+    transform: scale(1.05);
 }
 
 .Button-Submit:hover {
     background-color: #6c61be;
+    transform: scale(1.05);
 }
 
 /* ================== NAVBAR ============ */
