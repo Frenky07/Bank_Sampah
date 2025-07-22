@@ -20,59 +20,64 @@
     <main>
         <div class="Form-KK-Container">
             <form class="Form-KK" action="../../Back/php/Add_KK.php" method="POST">
-                <h1>Tambah Kepala Keluarga</h1>
+                <div class="Form-Header">
+                    <h1>Tambah Kepala Keluarga</h1>
+                    <hr>
+                </div>
                 <div class="Form-group">
-                    <div class="Form-Menu">
-                        <label for="nama">Nama Kepala Keluarga</label>
-                        <input type="text" id="nama" name="nama" required>
-                    </div>
-                    <div class="Form-Menu">
-                        <label for="jenis_kelamin">Jenis Kelamin</label>
-                        <select id="jenis_kelamin" name="jenis_kelamin" required>
-                            <option value="">Pilih Jenis Kelamin</option>
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
-                        </select>
-                    </div>
-                    <div class="Form-Menu">
-                        <label for="tempat_lahir">Tempat Lahir</label>
-                        <input type="text" id="tempat_lahir" name="tempat_lahir" required>
-                    </div>
-                    <div class="Form-Menu">
-                        <label for="tanggal_lahir">Tanggal Lahir</label>
-                        <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
-                    </div>
-                    <div class="Form-Menu">
-                        <label for="status">Status</label>
-                        <select id="status" name="status" required>
-                            <option value="">Pilih Status</option>
-                            <option value="Cerai Mati">Cerai Mati</option>
-                            <option value="Belum Kawin">Belum Kawin</option>
-                            <option value="Kawin">Kawin</option>
-                            <option value="Cerai Hidup">Cerai Hidup</option>
-                        </select>
-                    </div>
-                    <div class="Form-Menu">
-                        <label for="hub_keluarga">Hubungan Keluarga</label>
-                        <select id="hub_keluarga" name="hub_keluarga" required>
-                            <option value="">Pilih Hubungan Keluarga</option>
-                            <option value="Kepala Keluarga">Kepala Keluarga</option>
-                            <option value="Istri">Istri</option>
-                            <option value="Anak">Anak</option>
-                            <option value="Lainnya">Lainnya</option>
-                        </select>
-                    </div>
-                    <div class="Form-Menu">
-                        <label for="RT">RT</label>
-                        <input type="text" id="RT" name="RT" required>
-                    </div>
-                    <div class="Form-Menu">
-                        <label for="RW">RW</label>
-                        <input type="text" id="RW" name="RW" required>
-                    </div>
-                    <div class="Form-Menu">
-                        <label for="nomor_wa">Nomor WhatsApp</label>
-                        <input type="text" id="nomor_wa" name="nomor_wa" required>
+                    <div class="Form-Flex">
+                        <div class="Form-Menu">
+                            <label for="nama">Nama Kepala Keluarga</label>
+                            <input type="text" id="nama" name="nama" required>
+                        </div>
+                        <div class="Form-Menu">
+                            <label for="jenis_kelamin">Jenis Kelamin</label>
+                            <select id="jenis_kelamin" name="jenis_kelamin" required>
+                                <option value="">Pilih Jenis Kelamin</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="Form-Menu">
+                            <label for="tempat_lahir">Tempat Lahir</label>
+                            <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+                        </div>
+                        <div class="Form-Menu">
+                            <label for="tanggal_lahir">Tanggal Lahir</label>
+                            <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+                        </div>
+                        <div class="Form-Menu">
+                            <label for="status">Status</label>
+                            <select id="status" name="status" required>
+                                <option value="">Pilih Status</option>
+                                <option value="Cerai Mati">Cerai Mati</option>
+                                <option value="Belum Kawin">Belum Kawin</option>
+                                <option value="Kawin">Kawin</option>
+                                <option value="Cerai Hidup">Cerai Hidup</option>
+                            </select>
+                        </div>
+                        <div class="Form-Menu">
+                            <label for="hub_keluarga">Hubungan Keluarga</label>
+                            <select id="hub_keluarga" name="hub_keluarga" required>
+                                <option value="">Pilih Hubungan Keluarga</option>
+                                <option value="Kepala Keluarga">Kepala Keluarga</option>
+                                <option value="Istri">Istri</option>
+                                <option value="Anak">Anak</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="Form-Menu">
+                            <label for="RT">RT</label>
+                            <input type="text" id="RT" name="RT" required>
+                        </div>
+                        <div class="Form-Menu">
+                            <label for="RW">RW</label>
+                            <input type="text" id="RW" name="RW" required>
+                        </div>
+                        <div class="Form-Menu">
+                            <label for="nomor_wa">Nomor WhatsApp</label>
+                            <input type="text" id="nomor_wa" name="nomor_wa" required>
+                        </div>
                     </div>
                     <div class="Button-Container">
                         <button type="submit" class="Button-Submit">Simpan</button>

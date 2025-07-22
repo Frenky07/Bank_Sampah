@@ -42,21 +42,38 @@ body.slide-out-left {
 /* =============== Navbar ==================== */
 
 .Button-Back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
     background-color: #1D7171;
     color: #fff;
     border: none;
-    margin: 10px;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .Button-Back:hover {
     background-color: #145151;
+    transform: scale(1.05);
 }
 
+
 /* =========== Form ============== */
+
+.Form-Flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.Form-Menu {
+    flex: 1 1 45%;
+}
+
 
 .Form-KK-Container {
     display: flex;
@@ -67,9 +84,12 @@ body.slide-out-left {
 
 .Form-group {
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .Form-group label {
@@ -108,4 +128,29 @@ body.slide-out-left {
 
 .Button-Submit:hover {
     background-color: #3b3f9c;
-}   
+}
+
+@media (max-width: 768px) {
+    .Form-Menu {
+        flex: 1 1 100%;
+        /* satu kolom di layar kecil */
+    }
+}
+
+
+/* =========== Form Header ========== */
+
+.Form-Header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+hr {
+    border: 0;
+    height: 3px;
+    background-color: #fff;
+    margin: 10px 0;
+}
