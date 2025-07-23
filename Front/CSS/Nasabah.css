@@ -275,6 +275,20 @@ select {
     font-size: 16px;
 }
 
+.btn-Hapus {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin: 0 2px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-Hapus:hover {
+    background-color: #c0392b;
+}
+
 
 /* ==================== Table Tarik ========================== */
 

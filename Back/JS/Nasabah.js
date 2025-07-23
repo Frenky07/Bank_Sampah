@@ -74,9 +74,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     btnTarik.className = "btn-Tarik";
                     btnTarik.addEventListener("click", () => showStruk(item));
 
+                    const btnDelete = document.createElement("button");
+                    btnDelete.textContent = "Hapus";
+                    btnDelete.className = "btn-Hapus";
+                    btnDelete.addEventListener("click", () => deleteNasabah(item.id));
+
                     td.appendChild(btnNomor);
                     td.appendChild(btnEdit);
                     td.appendChild(btnTarik);
+                    td.appendChild(btnDelete);
 
                     tr.appendChild(td);
                     tbody.appendChild(tr);
@@ -123,6 +129,28 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("editSaldo").value = "";
         tarikPopup.style.display = "flex";
     }
+
+    function deleteNasabah(id) {
+    if (!confirm("Apakah Anda yakin ingin menghapus nasabah ini?")) return;
+
+    const formData = new FormData();
+    formData.append("id", id);
+
+    fetch("../../Back/php/delete_nasabah.php", {
+        method: "POST",
+        body: formData
+    })
+        .then(res => res.text())
+        .then(response => {
+            alert(response);
+            loadData(); // refresh tabel
+        })
+        .catch(error => {
+            console.error("Gagal menghapus nasabah:", error);
+            alert("Terjadi kesalahan saat menghapus nasabah.");
+        });
+}
+
 
     function closePopup() {
         tarikPopup.style.display = "none";
