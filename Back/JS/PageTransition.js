@@ -11,7 +11,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const currentPage = window.location.pathname.split('/').pop();
     const slideFrom = sessionStorage.getItem('slideFrom');
 
-    // === ANIMASI MASUK ===
     if (slideFrom === 'right') {
         body.classList.add('slide-in-right');
     } else if (slideFrom === 'left') {
@@ -20,14 +19,12 @@ window.addEventListener('DOMContentLoaded', () => {
         body.classList.add('fade-in');
     }
 
-    // Biarkan animasi masuk berjalan
     setTimeout(() => {
         body.classList.add('animate-in');
         body.classList.remove('slide-in-right', 'slide-in-left', 'fade-in');
         sessionStorage.removeItem('slideFrom');
     }, 10);
 
-    // === EVENT UNTUK SEMUA NAVIGASI LINK ===
     document.querySelectorAll('.Navbar-Item').forEach(link => {
         const href = link.getAttribute('href');
 
@@ -46,15 +43,13 @@ window.addEventListener('DOMContentLoaded', () => {
             const currentIndex = pageOrder.indexOf(currentPage);
             const targetIndex = pageOrder.indexOf(targetPage);
 
-            // Cek arah berdasarkan halaman tujuan
-            let direction = 'right'; // default
+            let direction = 'right';
             if (href.includes('Dashboard')) {
                 direction = 'left';
             } else if (href.includes('Login_Page')) {
                 direction = 'fade';
             }
 
-            // Tambahkan class animasi keluar
             if (direction === 'left') {
                 body.classList.add('slide-out-right');
             } else if (direction === 'right') {
@@ -63,7 +58,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 body.classList.add('fade-out');
             }
 
-            // Simpan arah untuk animasi masuk di halaman selanjutnya
             sessionStorage.setItem('slideFrom', direction);
 
             setTimeout(() => {

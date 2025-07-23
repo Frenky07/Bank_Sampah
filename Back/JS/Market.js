@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function editHarga(id) {
-    // Ambil data dari database berdasarkan id
     fetch(`../../Back/php/get_jenis_sampah_by_id.php?id=${id}`)
         .then(res => res.json())
         .then(data => {
@@ -59,7 +58,6 @@ function editData() {
             alert("Data berhasil diupdate!");
             document.querySelector(".Table-edit-harga").style.display = "none";
             currentEditId = null;
-            // Reload data tabel
             document.dispatchEvent(new Event("DOMContentLoaded"));
         } else {
             alert("Gagal mengupdate data.");

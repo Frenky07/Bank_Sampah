@@ -21,12 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Tampilkan data di elemen HTML
     document.getElementById("nama").textContent = "Nama: " + nasabah.nama;
     document.getElementById("jumlah-tabungan").textContent = "Jumlah Tabungan: Rp " + parseInt(nasabah.total_tabungan).toLocaleString();
 
     document.getElementById("btn-kembali").addEventListener("click", function () {
-        localStorage.removeItem("selectedNasabah"); 
+        localStorage.removeItem("selectedNasabah");
         window.location.href = "Nasabah.html";
     });
 
@@ -63,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     btnCetakTarik.className = "btn-Cetak-Tarik";
                     btnCetakTarik.addEventListener("click", () => {
                         showStrukTarik(item);
-                        currentNomorWA = item.nomorWA || ""; // simpan sementara dengan fallback
+                        currentNomorWA = item.nomorWA || "";
                     });
 
                     td.appendChild(btnCetakTarik);
@@ -76,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     });
 
-    // Event listener untuk tombol cetak struk (yang sudah ada di HTML)
     const btnCetakTarik = document.querySelector(".Button-Cetak-Tarik");
     if (btnCetakTarik) {
         btnCetakTarik.addEventListener("click", function () {
@@ -113,13 +111,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function showStruk(data) {
         console.log("Menampilkan struk untuk:", data);
 
-        // Validasi data yang masuk
         if (!data) {
             console.error("Data struk tidak valid!");
             return;
         }
 
-        // Pastikan elemen struk ada sebelum menampilkan
         const strukTable = document.querySelector(".Table-Struk");
         if (!strukTable) {
             console.error("Elemen .Table-Struk tidak ditemukan di HTML!");
@@ -127,15 +123,12 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Hitung total harga
         const hargaPerKg = parseInt(data.harga_per_kg) || 0;
         const berat = parseFloat(data.berat) || 0;
         const total = berat * hargaPerKg;
 
-        // Tampilkan modal/struk
         strukTable.style.display = "flex";
 
-        // Pastikan semua elemen ada sebelum mengisi data
         const elementsToFill = [
             { id: "nama-Struk", value: data.nama || "Tidak tersedia" },
             { id: "jenis-Struk", value: data.nama_jenis || "Tidak tersedia" },
@@ -156,42 +149,37 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showStrukTarik(data) {
-    console.log("Menampilkan struk untuk:", data);
+        console.log("Menampilkan struk untuk:", data);
 
-    if (!data) {
-        console.error("Data struk tidak valid!");
-        return;
-    }
-
-    const strukTableTarik = document.querySelector(".Table-Struk-Tarik");
-    if (!strukTableTarik) {
-        alert("Komponen struk tidak ditemukan! Periksa HTML Anda.");
-        return;
-    }
-
-    strukTableTarik.style.display = "flex";
-
-    const elementsToFill = [
-        { id: "nama-Struk-tarik", value: data.nama || "Tidak tersedia" },
-        { id: "total-tarik-saldo", value: `Rp ${parseInt(data.penarikan).toLocaleString()}` },
-        { id: "tanggal-Struk-tarik", value: data.tanggal || "Tidak tersedia" }
-    ];
-
-    elementsToFill.forEach(item => {
-        const element = document.getElementById(item.id);
-        if (element) {
-            element.innerText = item.value;
+        if (!data) {
+            console.error("Data struk tidak valid!");
+            return;
         }
-    });
 
-    // ✅ Simpan nomor WA nasabah
-    currentNomorWA = data.nomorWA || "";
-}
+        const strukTableTarik = document.querySelector(".Table-Struk-Tarik");
+        if (!strukTableTarik) {
+            alert("Komponen struk tidak ditemukan! Periksa HTML Anda.");
+            return;
+        }
 
+        strukTableTarik.style.display = "flex";
 
+        const elementsToFill = [
+            { id: "nama-Struk-tarik", value: data.nama || "Tidak tersedia" },
+            { id: "total-tarik-saldo", value: `Rp ${parseInt(data.penarikan).toLocaleString()}` },
+            { id: "tanggal-Struk-tarik", value: data.tanggal || "Tidak tersedia" }
+        ];
+
+        elementsToFill.forEach(item => {
+            const element = document.getElementById(item.id);
+            if (element) {
+                element.innerText = item.value;
+            }
+        });
+        currentNomorWA = data.nomorWA || "";
+    }
 
     function kirimStrukWA() {
-        // Ambil data dari elemen yang sudah diisi
         const namaEl = document.getElementById("nama-Struk");
         const jenisEl = document.getElementById("jenis-Struk");
         const beratEl = document.getElementById("berat-Struk");
@@ -223,18 +211,15 @@ document.addEventListener("DOMContentLoaded", function () {
 ====================================
 Terima kasih telah berpartisipasi menjaga lingkungan`;
 
-        // Jika nomor sudah ada
         if (currentNomorWA && currentNomorWA.trim() !== "") {
             const urlWA = `https://wa.me/${currentNomorWA}?text=${encodeURIComponent(strukText)}`;
             window.open(urlWA, '_blank');
             return;
         }
 
-        // Jika belum ada, minta input & simpan ke database
         const inputWA = prompt("Nomor WhatsApp belum tersedia. Masukkan nomor (cth: 6281234567890):");
         if (!inputWA) return;
 
-        // Simpan ke database
         fetch("../../Back/php/update_nomor_wa.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -253,7 +238,6 @@ Terima kasih telah berpartisipasi menjaga lingkungan`;
     }
 
     function kirimStrukWATarik() {
-        // Ambil data dari elemen yang sudah diisi
         const namaElTarik = document.getElementById("nama-Struk-tarik");
         const totalElTarik = document.getElementById("total-tarik-saldo");
         const tanggalElTarik = document.getElementById("tanggal-Struk-tarik");
@@ -276,18 +260,15 @@ Terima kasih telah berpartisipasi menjaga lingkungan`;
 ==============================
 Terima kasih telah berpartisipasi menjaga lingkungan 🌱`;
 
-        // Jika nomor WA sudah ada
         if (currentNomorWA && currentNomorWA.trim() !== "") {
             const urlWA = `https://wa.me/${currentNomorWA}?text=${encodeURIComponent(strukTexttarik)}`;
             window.open(urlWA, '_blank');
             return;
         }
 
-        // Jika belum ada, minta input & simpan ke database
         const inputWA = prompt("Nomor WhatsApp belum tersedia. Masukkan nomor (cth: 6281234567890):");
         if (!inputWA) return;
 
-        // Simpan ke database
         fetch("../../Back/php/update_nomor_wa.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -305,8 +286,6 @@ Terima kasih telah berpartisipasi menjaga lingkungan 🌱`;
             });
     }
 
-
-    // Fungsi tampilkan tabel Riwayat Setor
     document.getElementById("btn-setor").addEventListener("click", function () {
         document.getElementById("table-setor").style.display = "table";
         document.getElementById("Table-Tarik").style.display = "none";
@@ -336,16 +315,14 @@ Terima kasih telah berpartisipasi menjaga lingkungan 🌱`;
                     <td>${item.tanggal}</td>
                 `;
 
-                    // Buat tombol cetak untuk setiap row
                     const tdCetak = document.createElement("td");
                     const btnCetak = document.createElement("button");
                     btnCetak.textContent = "Cetak";
                     btnCetak.className = "btn-cetak";
 
-                    // Event listener untuk tombol cetak di tabel setor
                     btnCetak.addEventListener("click", () => {
                         showStruk(item);
-                        currentNomorWA = item.nomorWA || ""; // jika ada
+                        currentNomorWA = item.nomorWA || "";
                     });
 
                     tdCetak.appendChild(btnCetak);
@@ -358,13 +335,11 @@ Terima kasih telah berpartisipasi menjaga lingkungan 🌱`;
             });
     });
 
-    // Event listener untuk tombol Kirim WA (menggunakan ID)
     const btnKirimWA = document.getElementById("btn-kirim-wa");
     if (btnKirimWA) {
         btnKirimWA.addEventListener("click", kirimStrukWA);
     }
 
-    // Event listener untuk tombol tutup struk (menggunakan ID)
     const btnTutupStruk = document.getElementById("btn-tutup-struk");
     if (btnTutupStruk) {
         btnTutupStruk.addEventListener("click", function () {
@@ -375,9 +350,7 @@ Terima kasih telah berpartisipasi menjaga lingkungan 🌱`;
         });
     }
 
-    // Variabel global untuk menyimpan nomor WA sementara
     let currentNomorWA = "";
 
-    // Load default tab
     document.getElementById("btn-setor").click();
 });

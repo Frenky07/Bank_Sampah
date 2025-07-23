@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (!Array.isArray(data) || data.length === 0) {
                     const tr = document.createElement("tr");
-                    tr.innerHTML = `<td colspan="4" style="text-align:center;">Tidak ada data ditemukan</td>`; // colspan 4 sesuai jumlah kolom
+                    tr.innerHTML = `<td colspan="4" style="text-align:center;">Tidak ada data ditemukan</td>`;
                     tbody.appendChild(tr);
                     return;
                 }

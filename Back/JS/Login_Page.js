@@ -28,21 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Response status:', response.status);
             console.log('Response headers:', response.headers);
 
-            // Cek apakah response berhasil
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            // Ambil response sebagai text dulu untuk debugging
             const responseText = await response.text();
             console.log('Raw response:', responseText);
 
-            // Cek apakah response kosong
             if (!responseText.trim()) {
                 throw new Error('Response kosong dari server');
             }
 
-            // Coba parse JSON
             let result;
             try {
                 result = JSON.parse(responseText);
