@@ -364,3 +364,66 @@ input {
     background-color: #6c61be;
     transform: scale(1.05);
 }
+
+/* =================================================================== */
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .Navbar-Item {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        text-align: center;
+    }
+
+    .Filter-Container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .Filter-Item select {
+        width: 100%;
+    }
+
+    table,
+    th,
+    td {
+        font-size: 12px;
+    }
+
+    .btn-Cetak,
+    .btn-Edit,
+    .btn-Tarik,
+    .btn-Hapus,
+    .Button-Edit {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        margin: 5px 0;
+    }
+
+    .Table-Tarik .Tarik-Content,
+    .Table-Nomor .Nomor-Content {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .Filter-Item input,
+    .Form-Edit input,
+    .Form-Edit select {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .Judul-Table h2 {
+        font-size: 18px;
+    }
+}

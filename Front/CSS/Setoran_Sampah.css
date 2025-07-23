@@ -257,3 +257,71 @@ select {
         font-size: 0.8rem;
     }
 }
+
+/* ========================================= */
+
+@media (max-width: 600px) {
+    body {
+        transform: scale(1);
+        padding: 10px;
+    }
+
+    main {
+        padding: 10px;
+        margin-top: 40px;
+    }
+
+    .Form-Container {
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .Form-Menu label {
+        font-size: 14px;
+    }
+
+    input,
+    select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .Button-Container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .Button-Submit,
+    .Button-Add {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .Button-Back {
+        display: block;
+        width: fit-content;
+        font-size: 14px;
+        padding: 8px 16px;
+        margin-bottom: 15px;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+    }
+
+    .Navbar-Item {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        width: 100%;
+        text-align: center;
+    }
+}

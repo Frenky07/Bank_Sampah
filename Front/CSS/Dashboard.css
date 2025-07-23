@@ -285,3 +285,66 @@ tbody tr:nth-child(odd) td {
 }
 
 /* ================================= */
+
+@media (max-width: 600px) {
+    body {
+        transform: scale(1);
+        padding: 10px;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+    }
+
+    .Navbar-Item {
+        padding: 8px;
+        font-size: 0.9rem;
+        width: 80%;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .Section-Content {
+        padding: 10px;
+    }
+
+    .section-chart,
+    .section-keterangan {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .Judul h4,
+    .Judul-Keterangan h3 {
+        font-size: 1.2rem;
+        width: auto;
+    }
+
+    .custom-select {
+        max-width: 100%;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    #pieChart {
+        max-width: 100%;
+        height: auto;
+    }
+
+    table {
+        font-size: 0.85rem;
+        overflow-x: auto;
+        display: block;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+
+    .section {
+        font-size: 1.2rem;
+    }
+}

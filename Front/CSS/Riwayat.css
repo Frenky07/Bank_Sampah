@@ -272,3 +272,51 @@ button {
         display: block !important;
     }
 }
+
+/* ======================================================= */
+
+@media (max-width: 600px) {
+    body {
+        transform: none;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .Riwayat-Content {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    table,
+    th,
+    td {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .btn-Edit,
+    .btn-Cetak,
+    .Button-Cetak,
+    .Button-Edit {
+        padding: 8px 12px;
+        font-size: 13px;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .Table-Struk-Content,
+    .Table-Struk-Content-Tarik {
+        width: 90%;
+        max-width: none;
+        padding: 15px;
+    }
+
+    .Table-Struk-in,
+    .Table-Struk-in-Tarik {
+        font-size: 13px;
+    }
+
+    .Button-Edit-Riwayat {
+        margin-left: 0;
+    }
+}

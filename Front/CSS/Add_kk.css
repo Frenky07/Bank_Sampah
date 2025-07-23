@@ -155,3 +155,49 @@ hr {
     background-color: #fff;
     margin: 10px 0;
 }
+
+/* ========================================= */
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        transform: none;
+    }
+
+    .Button-Back {
+        top: 10px;
+        left: 10px;
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    .Form-group {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .Form-group label {
+        font-size: 14px;
+    }
+
+    .Form-group input,
+    .Form-group select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .Button-Submit {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .Form-Header {
+        font-size: 18px;
+    }
+
+    .Form-Flex {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

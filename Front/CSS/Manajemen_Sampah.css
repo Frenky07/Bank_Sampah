@@ -440,3 +440,106 @@ select {
         display: none !important;
     }
 }
+
+/* ======================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .Navbar-Item {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .Filter-Container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .Filter-Item select {
+        width: 100%;
+    }
+
+    .select-row-limit {
+        width: 100%;
+    }
+
+    .Table-Action {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .pagination {
+        justify-content: center;
+    }
+
+    .Container-Teks {
+        width: 90%;
+        padding: 15px;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    td {
+        text-align: left;
+        position: relative;
+        padding-left: 50%;
+        background-color: #f4f1e8;
+        margin-bottom: 10px;
+    }
+
+    td::before {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #333;
+        content: attr(data-label);
+    }
+
+    .Table-Container {
+        padding: 10px;
+    }
+
+    input,
+    select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .Button-Edit,
+    .Button-Cetak {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+}

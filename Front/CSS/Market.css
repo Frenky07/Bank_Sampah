@@ -380,3 +380,86 @@ h2{
     margin-top: 30px;
     text-align: center;
 }
+
+/* =============================================== */
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        transform: none;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .Navbar-Item {
+        width: 100%;
+        text-align: center;
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    .Filter-Container {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .Table-Market {
+        overflow-x: auto;
+        display: block;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    td {
+        position: relative;
+        padding-left: 50%;
+        background-color: #f4f1e8;
+        border: none;
+        margin-bottom: 10px;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 45%;
+        font-weight: bold;
+        white-space: nowrap;
+        color: #333;
+    }
+
+    .Table-Market td {
+        font-size: 13px;
+        padding: 12px;
+    }
+
+    .Button-Submit,
+    .Button-Edit {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .Table-edit-harga-Content {
+        width: 95%;
+        padding: 15px;
+    }
+}
