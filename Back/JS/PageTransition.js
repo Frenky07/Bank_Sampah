@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
 
-            if(href.includes('Login_page')) {
+            if(href.includes('index')) {
                 body.classList.add('-put');
                 sessionStorage.setItem('slideForm','Fade');
                 return setTimeout(() => window.location.href - href, 500);
@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
             let direction = 'right';
             if (href.includes('Dashboard')) {
                 direction = 'left';
-            } else if (href.includes('Login_Page')) {
+            } else if (href.includes('index')) {
                 direction = 'fade';
             }
 
