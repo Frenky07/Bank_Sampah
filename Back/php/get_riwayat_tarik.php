@@ -17,7 +17,7 @@ if (isset($_GET['nama']) && $_GET['nama'] !== '') {
     $result = $stmt->get_result();
 
     while ($row = $result->fetch_assoc()) {
-        $row['nama'] = $nama; // agar tetap ada
+        $row['nama'] = $nama;
         $data[] = $row;
     }
 

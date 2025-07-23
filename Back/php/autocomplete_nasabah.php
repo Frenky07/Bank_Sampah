@@ -7,8 +7,8 @@ $result = $conn->query("SELECT id, nama FROM nasabah WHERE nama LIKE '%$search%'
 $data = [];
 while ($row = $result->fetch_assoc()) {
     $data[] = [
-        "label" => $row['nama'], // ditampilkan ke user
-        "value" => $row['id']    // dikirim ke input hidden
+        "label" => $row['nama'],
+        "value" => $row['id']
     ];
 }
 

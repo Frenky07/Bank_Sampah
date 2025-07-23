@@ -2,7 +2,6 @@
 header('Content-Type: application/json');
 include 'koneksi.php';
 
-// Ambil tahun & bulan unik dari tanggal setoran
 $sql = "SELECT DISTINCT 
             YEAR(tanggal) AS tahun, 
             MONTH(tanggal) AS bulan 

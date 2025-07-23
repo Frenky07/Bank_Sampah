@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php'; // Pastikan koneksi ini sesuai dengan file koneksi kamu
+include 'koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'] ?? null;
@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Cek apakah nasabah memiliki tabungan > 0
     $check = $conn->prepare("SELECT total_tabungan FROM nasabah WHERE id = ?");
     $check->bind_param("i", $id);
     $check->execute();
@@ -26,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Hapus dari tabel nasabah
     $stmt = $conn->prepare("DELETE FROM nasabah WHERE id = ?");
     $stmt->bind_param("i", $id);
 

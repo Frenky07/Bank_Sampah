@@ -2,11 +2,10 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "bank_sampah"; // ganti sesuai nama database
+$dbname = "bank_sampah";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
-// Cek koneksi
 if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
@@ -16,12 +15,10 @@ $path = "C:\xampp\htdocs\Project_KKN\Back\php\data2.csv";
 $csvFile = fopen("data2.csv", "r");
 
 if ($csvFile !== FALSE) {
-    fgetcsv($csvFile); // Skip header baris pertama
+    fgetcsv($csvFile);
 
     while (($data = fgetcsv($csvFile, 1000, ";")) !== FALSE) {
-        // Pastikan jumlah kolom sesuai
         if (count($data) === 8) {
-            // Bersihkan dan siapkan data
             $nama          = $conn->real_escape_string(trim($data[0]));
             $jenis_kelamin = $conn->real_escape_string(trim($data[1]));
             $tempat_lahir  = $conn->real_escape_string(trim($data[2]));
@@ -31,7 +28,6 @@ if ($csvFile !== FALSE) {
             $RT            = $conn->real_escape_string(trim($data[6]));
             $RW            = $conn->real_escape_string(trim($data[7]));
 
-            // Insert ke database
             $sql = "INSERT INTO nasabah (nama, jenis_kelamin, tempat_lahir, tanggal_lahir, status, hub_keluarga, RT, RW)
                     VALUES ('$nama', '$jenis_kelamin', '$tempat_lahir', '$tanggal_lahir', '$status', '$hub_keluarga', '$RT', '$RW')";
 

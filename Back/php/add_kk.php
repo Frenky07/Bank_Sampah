@@ -1,7 +1,6 @@
 <?php
 include 'koneksi.php';
 
-// Ambil data dari form
 $nama = $_POST['nama'];
 $jenis_kelamin = $_POST['jenis_kelamin'] == "Laki-laki" ? "Lk" : "Pr";
 $tempat_lahir = $_POST['tempat_lahir'];
@@ -11,16 +10,14 @@ $hub_keluarga = $_POST['hub_keluarga'];
 $RT = $_POST['RT'];
 $RW = $_POST['RW'];
 $nomorWA = $_POST['nomor_wa'];
-$total_tabungan = 0; // default saat pertama kali
+$total_tabungan = 0;
 
-// Siapkan statement
 $sql = "INSERT INTO nasabah (nama, jenis_kelamin, tempat_lahir, tanggal_lahir, status, hub_keluarga, RT, RW, total_tabungan, nomorWA) 
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssssssssss", $nama, $jenis_kelamin, $tempat_lahir, $tanggal_lahir, $status, $hub_keluarga, $RT, $RW, $total_tabungan, $nomorWA);
 
-// Eksekusi dan cek
 if ($stmt->execute()) {
     echo "<script>
         alert('Data berhasil ditambahkan!');

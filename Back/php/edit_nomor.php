@@ -1,7 +1,6 @@
 <?php
 include 'koneksi.php';
 
-// Tangkap input
 $id = $_POST['id'];
 $nomorWA = $_POST['nomorWA'];
 
