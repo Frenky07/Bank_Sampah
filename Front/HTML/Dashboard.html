@@ -117,7 +117,6 @@
                             }
                         });
 
-                        // Tabel keterangan
                         isiKeterangan.innerHTML = '';
                         data.forEach((item, index) => {
                             const row = document.createElement("tr");
@@ -133,11 +132,9 @@
                     .catch(error => console.error('Gagal ambil data:', error));
             }
 
-            // Event Listener
             filterTahunSelect.addEventListener("change", loadChartAndTable);
             filterBulanSelect.addEventListener("change", loadChartAndTable);
 
-            // Isi dropdown tahun & bulan
             fetch("../../Back/php/get_tahun_bulan_sampah.php")
                 .then(response => response.json())
                 .then(data => {
@@ -172,7 +169,7 @@
                         filterBulanSelect.appendChild(opt);
                     });
 
-                    loadChartAndTable(); // Load default chart
+                    loadChartAndTable();
                 });
         });
     </script>

@@ -94,14 +94,12 @@
                     source: "../../Back/php/autocomplete_nasabah.php",
                     minLength: 1,
                     focus: function (event, ui) {
-                        // Saat navigasi lewat keyboard, isi field dengan nama
                         $("#nama").val(ui.item.label);
                         return false;
                     },
                     select: function (event, ui) {
-                        // Saat item dipilih
-                        $("#nama").val(ui.item.label); // tampilkan nama
-                        $("#id_nasabah").val(ui.item.value); // simpan ID ke hidden
+                        $("#nama").val(ui.item.label);
+                        $("#id_nasabah").val(ui.item.value);
                         return false;
                     }
                 });

@@ -86,6 +86,20 @@
             </form>
         </div>
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.querySelector(".Form-KK");
+
+            form.addEventListener("submit", (e) => {
+                const konfirmasi = confirm("Apakah data yang diisi sudah benar?");
+                if (!konfirmasi) {
+                    e.preventDefault(); // batalkan submit
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
