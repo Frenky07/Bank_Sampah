@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+.Img-Setoran_Sampah {
+    width: 100%;
+    filter: brightness(40%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
 body {
     font-family: "Poppins", sans-serif;
     line-height: 1.6;
