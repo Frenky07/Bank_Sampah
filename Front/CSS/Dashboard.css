@@ -46,7 +46,8 @@ body.fade-out {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(157, 193, 57, 0.32);
+    background: linear-gradient(180deg, rgba(157, 193, 57, 0.32) 0%, rgba(164, 179, 121, 0.156) 100%);
+    /* background: rgba(157, 193, 57, 0.32); */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2.4px);
     -webkit-backdrop-filter: blur(2.4px);
@@ -104,7 +105,7 @@ body.fade-out {
 }
 
 .Navbar-Item:active {
-    background-color: #1D7171;
+    background-color: #2b711dad;
     transform: translateY(0);
 }
 
@@ -263,8 +264,6 @@ tbody tr:nth-child(odd) td {
         gap: 30px;
         flex-wrap: wrap;
         justify-content: center;
-        /* dari 100px jadi lebih kecil */
-        /* jika masih terlalu panjang, boleh wrap */
     }
 
     .Navbar-Item {
@@ -293,7 +292,7 @@ tbody tr:nth-child(odd) td {
     }
 
     .navbar-menu {
-        flex-direction: column;
+        /* flex-direction: column; */
         gap: 10px;
         padding: 10px 0;
     }

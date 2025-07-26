@@ -118,7 +118,7 @@ body.slide-out-left {
 }
 
 .Navbar-Item:active {
-    background-color: #1D7171;
+    background-color: #2b711dad;
     transform: translateY(0);
 }
 
