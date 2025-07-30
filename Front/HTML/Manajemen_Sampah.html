@@ -15,7 +15,7 @@
 
 <body>
     <img src="../../Images/1000546992.jpg" class="Img-Kelola">
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="navbar-container">
         </div>
         <div class="navbar-menu">
@@ -92,13 +92,14 @@
             </table>
 
             <div class="Table-Action">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; width: 100%;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; width: 100%;">
                     <select class="select-row-limit" id="rowLimit">
                         <option value="10">10 Baris</option>
                         <option value="25">25 Baris</option>
                         <option value="50">50 Baris</option>
                     </select>
-    
+
                     <div style="display: flex; gap: 20px; align-items: center;">
                         <span>«</span>
                         <span
@@ -158,6 +159,21 @@
     <script src="../../Back/JS/Manajemen_sampah.js"></script>
 
     <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener("scroll", function () {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                navbar.classList.add("navbar-hidden");
+            } else {
+                navbar.classList.remove("navbar-hidden");
+            }
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+
         $(document).ready(function () {
             $(document).ready(function () {
                 $.ajax({

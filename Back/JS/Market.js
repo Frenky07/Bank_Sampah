@@ -1,5 +1,20 @@
 let currentEditId = null;
 
+let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener("scroll", function () {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                navbar.classList.add("navbar-hidden");
+            } else {
+                navbar.classList.remove("navbar-hidden");
+            }
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+
 document.addEventListener("DOMContentLoaded", function () {
     const tbody = document.getElementById("datamarket");
     const inputNama = document.getElementById("editnama");

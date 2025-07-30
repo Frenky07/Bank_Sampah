@@ -16,7 +16,7 @@
 
 <body>
     <img src="../../Images/1000546993.jpg" class="Img-Setoran_Sampah">
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="navbar-container">
         </div>
         <div class="navbar-menu">
@@ -71,6 +71,21 @@
         </div>
 
         <script>
+            let lastScrollTop = 0;
+            const navbar = document.getElementById('navbar');
+
+            window.addEventListener("scroll", function () {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (currentScroll > lastScrollTop) {
+                    navbar.classList.add("navbar-hidden");
+                } else {
+                    navbar.classList.remove("navbar-hidden");
+                }
+
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            });
+
             $(document).ready(function () {
                 $.ajax({
                     url: "../../Back/php/get_jenis_sampah_json.php",

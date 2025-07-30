@@ -91,7 +91,7 @@ main {
     position: sticky;
     top: 0;
     z-index: 1000;
-
+    transition: transform 0.3s ease, opacity 0.3s ease;
     background: rgba(157, 193, 57, 0.32);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2.4px);

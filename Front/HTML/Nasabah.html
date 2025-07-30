@@ -11,7 +11,7 @@
 
 <body>
     <img src="../../Images/1000546994.jpg" class="Img-Nasabah">
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="navbar-container">
             <div class="navbar-menu">
                 <a href="Dashboard.html" class="Navbar-Item">Beranda</a>
@@ -81,6 +81,22 @@
             </div>
         </div>
     </main>
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener("scroll", function () {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                navbar.classList.add("navbar-hidden");
+            } else {
+                navbar.classList.remove("navbar-hidden");
+            }
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+    </script>
 </body>
 
 </html>
